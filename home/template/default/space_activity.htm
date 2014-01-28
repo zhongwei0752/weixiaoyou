@@ -1,0 +1,372 @@
+<!--{template header}-->
+<script src="./template/default/feed/js/jquery.min.js"></script> 
+
+<!--main-container-part-->
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb">
+      <a href="index.html" title="活动中心" class="tip-bottom"><i class="icon-tint"></i>活动中心</a>
+      <div class="bg_lb" style="float:right;margin-top:-38px;"> <a href="#huodongmyModal" data-toggle="modal" style="color:#fff;"> <i class="icon-pencil"></i>发起活动</a> </div>
+    </div>
+  </div>
+   <!-- 楼下这div是发起活动的窗口 -->
+  <div id="huodongmyModal" class="modal hide">
+    <div class="modal-header">
+      <button data-dismiss="modal" class="close" type="button">×</button>
+      <h3>发起活动</h3>
+    </div>
+
+    <div class="modal-body">
+      
+             
+              <div class="widget-content nopadding" style="border:0;">
+                <form action="#" method="get" class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label">Last Name :</label>
+                    <div class="controls">
+                      <input type="text" class="" placeholder="Last name">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Date Picker (mm-dd)</label>
+                    <div class="controls">
+                      <div data-date="12-02-2012" class="input-append date datepicker">
+                       <input type="text" value="12-02-2012" data-date-format="mm-dd-yyyy" class="span2">
+                      <span class="add-on"><i class="icon-th"></i></span> </div>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Company info :</label>
+                    <div class="controls">
+                      <input type="text" class="" placeholder="Company name">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Description field:</label>
+                    <div class="controls">
+                      <input type="text" class="">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Message</label>
+                    <div class="controls">
+                      <textarea class=""></textarea>
+                    </div>
+                  </div>
+                
+                </form>
+              </div>
+      
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success">确定</button>
+      <a data-dismiss="modal" class="btn btn-inverse" href="#">取消</a>
+    </div>
+  </div>
+<!--End-breadcrumbs-->
+      
+
+
+<!--Action boxes-->
+  <div class="container-fluid">
+    <div class="span9">
+      <!--{loop $list $value}-->
+      <div class="widget-box">
+        <div class="widget-title bg_ly" data-toggle="collapse" href="#$value[id]"><span class="icon"><i class="icon-chevron-down"></i></span>
+          <!-- 楼上href的id要与楼下div的id对应 -->
+          <h5>$value[subject]</h5>
+        </div>
+        <div class="widget-content nopadding collapse in" id="$value[id]"><!-- 加in默认打开 -->
+          <ul class="recent-posts">
+            <li>
+              <!--{if $value[thumbpic]}-->
+              <div class="user-thumb" style="width:100px;height:100%;text-align:center;"> <img width="100" height="100%" alt="User" src="$value[thumbpic]"><a href="#bigModal$value[id]"  data-toggle="modal">(放大图片)</a></div>
+              <div class="article-post" style="padding-left: 80px;"> <span class="user-info">$value[message] </span>
+              <!--{else}-->
+              <!-- <div class="user-thumb"> <img width="40" height="40" alt="User" src="./template/default/feed/img/demo/av4.jpg"> </div> -->
+              <div class="article-post"> <span class="user-info">$value[message] </span>
+              <!--{/if}-->
+                <p><a href="#">有兴趣电联10086报名申请，周六早上9:00在13、14栋集合，装备食物自备。</a> </p>
+                <p><a href="#">妹子优先。</a> </p>
+                <!--{if $value[thumbpic]}-->
+                <br/>
+                <!--{/if}-->
+              </div>
+            <li>
+              <a href="#myModal$value[id]" id="amyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">报名</button></a>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+             <!-- 楼下这div是发起活动的窗口 -->
+            <div id="myModal$value[id]" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>扫描二维码报名（请注意个人隐私）</h3>
+              </div>
+
+              <div class="modal-body" style='text-align:center;'>
+               <img src="./template/default/img/loading1.gif">
+              </div>
+              <div class="modal-footer"><a data-dismiss="modal" class="btn btn-inverse" href="#">取消</a> </div>
+            </div>
+            <!-- 图片放大模式 -->
+             <div id="bigModal$value[id]" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>$value[subject]的图片(大图模式)</h3>
+              </div>
+
+              <div class="modal-body" style='text-align:center;max-height: 600px;'>
+               <img src="$value[pic]">
+              </div>
+              <div class="modal-footer"><a data-dismiss="modal" class="btn btn-inverse" href="#">取消</a> </div>
+            </div>
+<!--End-breadcrumbs-->
+<script type="text/javascript">
+ $(document).ready(function () {
+  $("#amyModal$value[id]").click(function () {
+          $.ajax({
+                 type: "POST",
+                 url: "./source/qr.php",
+                 data: "uid=$value[uid]&id=$value[id]&qr=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                  async: true,                    
+                    success: function (data) {
+                    $(".modal-body").html("<img src='"+data+"'>");
+                    }
+                  })
+        });
+
+  })
+</script>
+      <!--{/loop}-->
+      
+      <div class="pagination alternate" style="text-align:center;"><ul>$multi</ul></div>
+    </div>
+    <div class="span4">
+            <div class="widget-box">
+              <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
+                <h5>热门活动</h5>
+              </div>
+              <div class="widget-content nopadding collapse in" id="collapseG2">
+                <ul class="recent-posts">
+                  <li>
+                    <div class="user-thumb"> <img width="40" height="40" alt="User" src="./template/default/feed/img/demo/av1.jpg"> </div>
+                    <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
+                      <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="user-thumb"> <img width="40" height="40" alt="User" src="./template/default/feed/img/demo/av2.jpg"> </div>
+                    <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
+                      <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="user-thumb"> <img width="40" height="40" alt="User" src="./template/default/feed/img/demo/av4.jpg"> </div>
+                    <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
+                      <p><a href="#">This is a much longer one that will go on for a few lines.Itaffle to pad out the comment.</a> </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+         
+            <div class="widget-box">
+              <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
+                <h5>Progress Box</h5>
+              </div>
+              <div class="widget-content">
+                <ul class="unstyled">
+                  <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 81% Clicks <span class="pull-right strong">567</span>
+                    <div class="progress progress-striped ">
+                      <div style="width: 81%;" class="bar"></div>
+                    </div>
+                  </li>
+                  <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 72% Uniquie Clicks <span class="pull-right strong">507</span>
+                    <div class="progress progress-success progress-striped ">
+                      <div style="width: 72%;" class="bar"></div>
+                    </div>
+                  </li>
+                  <li> <span class="icon24 icomoon-icon-arrow-down-2 red"></span> 53% Impressions <span class="pull-right strong">457</span>
+                    <div class="progress progress-warning progress-striped ">
+                      <div style="width: 53%;" class="bar"></div>
+                    </div>
+                  </li>
+                  <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 3% Online Users <span class="pull-right strong">8</span>
+                    <div class="progress progress-danger progress-striped ">
+                      <div style="width: 3%;" class="bar"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="widget-box">
+              <div class="widget-title bg_lo" data-toggle="collapse" href="#collapseG3"> <span class="icon"> <i class="icon-chevron-down"></i> </span>
+                <h5>News updates</h5>
+              </div>
+              <div class="widget-content nopadding updates collapse in" id="collapseG3">
+                <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                  <div class="update-done"><a title="" href="#"><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></a> <span>dolor sit amet, consectetur adipiscing eli</span> </div>
+                  <div class="update-date"><span class="update-day">20</span>jan</div>
+                </div>
+                <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a title="" href="#"><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
+                <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a title="" href="#"><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
+                <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a title="" href="#"><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
+                <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a title="" href="#"><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
+              </div>
+            </div>
+            
+    </div>
+  </div>
+</div>
+
+<!--end-main-container-part-->
+
+<!--Footer-part-->
+
+
+<!--{template footer}-->
+
+
+<!--end-Footer-part-->
+
+<script src="./template/default/feed/js/excanvas.min.js"></script> 
+
+<script src="./template/default/feed/js/jquery.ui.custom.js"></script> 
+<script src="./template/default/feed/js/bootstrap.min.js"></script> 
+<script src="./template/default/feed/js/jquery.flot.min.js"></script> 
+<script src="./template/default/feed/js/jquery.flot.resize.min.js"></script> 
+<script src="./template/default/feed/js/jquery.peity.min.js"></script> 
+<script src="./template/default/feed/js/fullcalendar.min.js"></script> 
+<script src="./template/default/feed/js/matrix.js"></script> 
+<script src="./template/default/feed/js/matrix.dashboard.js"></script> 
+<script src="./template/default/feed/js/jquery.gritter.min.js"></script> 
+<script src="./template/default/feed/js/matrix.interface.js"></script> 
+<script src="./template/default/feed/js/matrix.chat.js"></script> 
+<script src="./template/default/feed/js/jquery.validate.js"></script> 
+<script src="./template/default/feed/js/matrix.form_validation.js"></script> 
+<script src="./template/default/feed/js/jquery.wizard.js"></script> 
+<script src="./template/default/feed/js/jquery.uniform.js"></script> 
+<script src="./template/default/feed/js/select2.min.js"></script> 
+<script src="./template/default/feed/js/matrix.popover.js"></script> 
+<script src="./template/default/feed/js/jquery.dataTables.min.js"></script> 
+<script src="./template/default/feed/js/matrix.tables.js"></script> 
+<script type="text/javascript" src="./template/default/feed/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./template/default/feed/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    var today = new Date();
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        autoclose: true,
+        todayBtn: true,
+        showMeridian: true,
+        startDate: today,
+        format: 'yyyy-mm-dd hh:ii'
+
+    });
+  $(document).ready(function () {
+    $("#huodong").click(function () {
+      $.ajax({
+                 type: "POST",
+                 url: "space.php?do=deal",
+                 data: "subject="+$('#subject').val()+"&time="+$('#time').val()+" &message="+$('#message').val()+"&huodong=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                  async: true,                    
+                    success: function (data) {
+                      if(data=='-1')
+                      {
+                        alert("选项有空值");
+                      }else{
+                        alert("发布成功");
+                      }
+                    }
+                  })
+              });
+         
+    $("#guoneimore").click(function () {
+      
+        $.ajax({
+                   type: "POST",
+                   url: "space.php?do=deal",
+                   data: "more=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                    async: true,                    
+                      success: function (data) {
+                      $("#guoneimore").before(data);//国内新闻更多按钮实现方法
+                      $("#guoneimore").hide();//更多隐藏
+                      }
+                });
+            });
+
+    $("#guowaimore").click(function () {
+      
+        $.ajax({
+                   type: "POST",
+                   url: "space.php?do=deal",
+                   data: "guowaimore=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                    async: true,                    
+                      success: function (data) {
+                      $("#guowaimore").before(data);//国内新闻更多按钮实现方法
+                      $("#guowaimore").hide();//更多隐藏
+                      }
+                });
+            });
+
+    $("#yulemore").click(function () {
+      
+        $.ajax({
+                   type: "POST",
+                   url: "space.php?do=deal",
+                   data: "yulemore=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                    async: true,                    
+                      success: function (data) {
+                      $("#yulemore").before(data);//国内新闻更多按钮实现方法
+                      $("#yulemore").hide();//更多隐藏
+                      }
+                });
+            });
+    $("#tiyumore").click(function () {
+      
+        $.ajax({
+                   type: "POST",
+                   url: "space.php?do=deal",
+                   data: "tiyumore=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                    async: true,                    
+                      success: function (data) {
+                      $("#tiyumore").before(data);//国内新闻更多按钮实现方法
+                      $("#tiyumore").hide();//更多隐藏
+                      }
+                });
+            });
+      });
+</script>
+
+<script type="text/javascript">
+  // This function is called from the pop-up menus to transfer to
+  // a different page. Ignore if the value returned is a null string:
+  function goPage (newURL) {
+
+      // if url is empty, skip the menu dividers and reset the menu selection to default
+      if (newURL != "") {
+      
+          // if url is "-", it is this page -- reset the menu:
+          if (newURL == "-" ) {
+              resetMenu();            
+          } 
+          // else, send page to designated URL            
+          else {  
+            document.location.href = newURL;
+          }
+      }
+  }
+
+// resets the menu selection upon entry to this page:
+function resetMenu() {
+   document.gomenu.selector.selectedIndex = 2;
+}
+</script>
+</body>
+</html>
