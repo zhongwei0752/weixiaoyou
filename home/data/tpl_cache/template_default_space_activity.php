@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_activity|template/default/header|template/default/footer', '1391767717', 'template/default/space_activity');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_activity|template/default/header|template/default/footer', '1391768378', 'template/default/space_activity');?><!DOCTYPE html>
 <html lang="en">
 <head>
 <title>微校友</title>
@@ -184,7 +184,8 @@
 
 <!--Action boxes-->
   <div class="container-fluid">
-    <div class="span9">
+    <div class="row-fluid">
+    <div class="span8">
       <?php if(is_array($list)) { foreach($list as $value) { ?>
       <div class="widget-box">
         <div class="widget-title bg_ly" data-toggle="collapse" href="#<?=$value['id']?>"><span class="icon"><i class="icon-chevron-down"></i></span>
@@ -386,7 +387,7 @@ $(function(){
     </div>
   </div>
 </div>
-
+</div>
 <!--end-main-container-part-->
 
 <!--Footer-part-->
