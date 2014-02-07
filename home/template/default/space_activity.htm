@@ -1,6 +1,8 @@
 <!--{template header}-->
 <script src="./template/default/feed/js/jquery.min.js"></script> 
-
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
+<link rel="stylesheet" href="./template/default/time/css/styles.css" />
+<link rel="stylesheet" href="./template/default/time/countdown/jquery.countdown.css" />
 <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
@@ -77,6 +79,9 @@
         <div class="widget-title bg_ly" data-toggle="collapse" href="#$value[id]"><span class="icon"><i class="icon-chevron-down"></i></span>
           <!-- 楼上href的id要与楼下div的id对应 -->
           <h5>$value[subject]</h5>
+          <!-- <div class="countdown" style="margin-top:4px;"></div> -->
+          <p id="notetime" style="float:right;margin-top:5px;margin-right:5px;"></p> 
+          <input type="hidden" id="time$value[id]" value="$value[time]">
         </div>
         <div class="widget-content nopadding collapse in" id="$value[id]"><!-- 加in默认打开 -->
           <ul class="recent-posts">
@@ -89,15 +94,19 @@
               <div class="article-post"> <span class="user-info">$value[message] </span>
               <!--{/if}-->
                 <p><a href="#">有兴趣电联10086报名申请，周六早上9:00在13、14栋集合，装备食物自备。</a> </p>
-                <p><a href="#">妹子优先。</a> </p>
+                <p><a href="#"><!--{date('m-d H:i',$value[time])}--></a> </p>
                 <!--{if $value[thumbpic]}-->
                 <br/>
                 <!--{/if}-->
               </div>
-            <li>
+              
+            <li id="baoming">
+
               <a href="#myModal$value[id]" id="amyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">报名</button></a>
               
             </li>
+               
+
           </ul>
         </div>
       </div>
@@ -141,6 +150,49 @@
         });
 
   })
+</script>
+<script src="./template/default/time/countdown/jquery.countdown.js"></script>
+<script type="text/javascript">
+$(function(){
+   var notetime = $('#notetime');
+  var note = $('#time$value[id]').val()*1000,
+
+  ts = $('#time$value[id]').val()*1000,
+    newYear = true;
+  if((new Date()).getTime() < ts){
+    // The new year is here! Count towards something else.
+    // Notice the *1000 at the end - time must be in milliseconds
+    ts = (new Date()).getTime() + (note-(new Date()).getTime());
+      $("#time$value[id]").parent().find('.countdown').countdown({
+    timestamp : ts,
+    callback  : function(days, hours, minutes, seconds){
+
+      var message = "距离截止时间还有:";
+      if(days!='0'){
+        message += days + " 天"  + " ";
+      }
+      message += hours + " 时" + " ";
+      message += minutes + " 分"   + " ";
+      message += seconds + " 秒" + " ";
+ /*     
+      if(newYear){
+        message += "left until the new year!";
+      }
+      else {
+        message += "left to 10 days from now!";
+      }*/
+      $("#time$value[id]").parent().find('#notetime').html(message);
+      }
+    });
+    newYear = false;
+  }else{
+    $("#time$value[id]").parent().find('.countdown').hide();
+    $("#time$value[id]").parent().parent().find('#baoming').hide();
+  }
+    
+
+  
+});
 </script>
       <!--{/loop}-->
       

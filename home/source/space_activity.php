@@ -16,7 +16,7 @@ $start = ($page-1)*$perpage;
 ckstart($start, $perpage);
 $theurl="space.php?do=activity";
 $count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('activity')." "),0);
-$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." LIMIT $start,$perpage");
+$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." order by dateline DESC LIMIT $start,$perpage ");
 		while ($value = $_SGLOBAL['db']->fetch_array($query)) {
 			$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('pic')." where picid=$value[picid]");
 			$value1 = $_SGLOBAL['db']->fetch_array($query1);

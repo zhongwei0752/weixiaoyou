@@ -13,7 +13,7 @@ if($huodong){
 	$subject = $_POST['subject'];
 	$place = $_POST['place'];
 	$callplace = $_POST['callplace'];
-	$time = strtotime($_POST['time']);
+	$time = strtotime($_POST['time'])-8*60*60;
 	$dateline = $_SGLOBAL['timestamp'];
 	$uid = $_SGLOBAL['supe_uid'];
 	$message = $_POST['message'];

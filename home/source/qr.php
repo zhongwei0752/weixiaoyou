@@ -2,7 +2,7 @@
 		$uid=$_POST['uid'];
 		$id=$_POST['id'];
 		$qrurl="http://baidu.com?do=activity&uid=$uid&id=$id";
-		if($qr){
+		if($uid&&$id){
 			$post["message"] = "$qrurl";
 		}else{
 			$post["message"] = "http://baidu.com";
