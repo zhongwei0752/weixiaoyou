@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_feed|template/default/header|template/default/space_feed_li|template/default/footer', '1391850664', 'template/default/space_feed');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_feed|template/default/header|template/default/space_feed_li|template/default/footer', '1391852033', 'template/default/space_feed');?><!DOCTYPE html>
 <html lang="en">
 <head>
 <title>微校友</title>

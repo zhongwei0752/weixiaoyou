@@ -1,7 +1,8 @@
 	<?php
 		$uid=$_POST['uid'];
+		$loginuid=$_POST['loginuid'];
 		$id=$_POST['id'];
-		$qrurl="http://baidu.com?do=activity&uid=$uid&id=$id";
+		$qrurl="http://www.weixyo.com/home/wx/wx.php?do=activity&uid=$uid&loginuid=$loginuid&id=$id";
 		if($uid&&$id){
 			$post["message"] = "$qrurl";
 		}else{
