@@ -10,6 +10,10 @@ include_once(S_ROOT.'./data/data_magic.php');
 //ÊÇ·ñ¹Ø±ÕÕ¾µã
 checkclose();
 
+if(empty($_SGLOBAL['supe_uid'])){
+	header("Location: index.php");  
+}
+
 //´¦Àírewrite
 if($_SCONFIG['allowrewrite'] && isset($_GET['rewrite'])) {
 	$rws = explode('-', $_GET['rewrite']);

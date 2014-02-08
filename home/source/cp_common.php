@@ -29,7 +29,7 @@ if($op == 'logout') {
 		clearcookie();
 		ssetcookie('_refer', '');
 	}
-	showmessage('security_exit', 'index.php', 1, array($ucsynlogout));
+	header("Location: index.php");  
 
 } elseif($op == 'seccode') {
 

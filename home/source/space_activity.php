@@ -7,6 +7,8 @@
 if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
+$op=$_GET['op'];
+
 //分页
 $page = empty($_GET['page'])?1:intval($_GET['page']);
 if($page<1) $page=1;
@@ -14,9 +16,17 @@ $perpage = 10;
 $perpage = mob_perpage($perpage);
 $start = ($page-1)*$perpage;
 ckstart($start, $perpage);
-$theurl="space.php?do=activity";
-$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('activity')." "),0);
-$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." order by dateline DESC LIMIT $start,$perpage ");
+if($op=='me'){
+//我的活动
+	$theurl="space.php?do=activity";
+	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('activity')." where time>$_SGLOBAL[timestamp]"),0);
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where uid=$_SGLOBAL[supe_uid] order by dateline DESC LIMIT $start,$perpage ");
+
+}else{
+	$theurl="space.php?do=activity";
+	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('activity')." where time>$_SGLOBAL[timestamp]"),0);
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where time>$_SGLOBAL[timestamp] order by dateline DESC LIMIT $start,$perpage ");
+	}
 		while ($value = $_SGLOBAL['db']->fetch_array($query)) {
 			$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('pic')." where picid=$value[picid]");
 			$value1 = $_SGLOBAL['db']->fetch_array($query1);
@@ -29,6 +39,7 @@ $query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." order by da
 		}
 $multi = multi($count, $perpage, $page, $theurl);
 include_once template("space_activity");
+
 
 
 

@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/network', '1390880713', 'template/default/network');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/network', '1391850717', 'template/default/network');?><!DOCTYPE html>
 <html lang="en">
     
 <head>
@@ -31,22 +31,23 @@
                 <input type="hidden" name="refer" value="space.php?do=home" />
                 <div class="form-actions">
                 	<input type="hidden" name="formhash" value="<?php echo formhash(); ?>" />
-                    <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">忘记密码?</a></span>
+                    <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">注册</a></span>
                     <span class="pull-right"><input type="submit" id="loginsubmit" name="loginsubmit" class="btn btn-success" value="登录"/> </span>
                 </div>
             </form>
             <form id="recoverform" action="#" class="form-vertical">
-<p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
+<p class="normal_text">广东医学院的请扫描下方二维码</p>
 
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                            <!-- <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" /> -->
+                            <img src="./gdmc.png">
                         </div>
                     </div>
                
                 <div class="form-actions">
-                    <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-                    <span class="pull-right"><a class="btn btn-info"/>Reecover</a></span>
+                    <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; 返回</a></span>
+                    <!-- <span class="pull-right"><a class="btn btn-info"/>Reecover</a></span> -->
                 </div>
             </form>
         </div>
