@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_activity|template/default/header|template/default/footer', '1391852042', 'template/default/space_activity');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_activity|template/default/header|template/default/footer', '1391865501', 'template/default/space_activity');?><!DOCTYPE html>
 <html lang="en">
 <head>
 <title>微校友</title>
@@ -258,7 +258,7 @@
           $.ajax({
                  type: "POST",
                  url: "./source/qr.php",
-                 data: "uid=<?=$value['uid']?>&id=<?=$value['id']?>&qr=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                 data: "uid=<?=$value['uid']?>&loginuid=<?=$_SGLOBAL['supe_uid']?>&id=<?=$value['id']?>&qr=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
                   async: true,                    
                     success: function (data) {
                     $(".modal-body").html("<img src='"+data+"'>");

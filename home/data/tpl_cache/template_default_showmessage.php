@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/showmessage|template/default/header|template/default/footer', '1391850619', 'template/default/showmessage');?><?php $_TPL['nosidebar']=1; ?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/showmessage|template/default/header|template/default/footer', '1391865473', 'template/default/showmessage');?><?php $_TPL['nosidebar']=1; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
