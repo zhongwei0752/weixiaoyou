@@ -20,12 +20,12 @@ if($op=='me'){
 //我的活动
 	$theurl="space.php?do=activity";
 	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('activity')." where time>$_SGLOBAL[timestamp]"),0);
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where uid=$_SGLOBAL[supe_uid] order by dateline DESC LIMIT $start,$perpage ");
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where hide='1' and uid=$_SGLOBAL[supe_uid] order by dateline DESC LIMIT $start,$perpage ");
 
 }else{
 	$theurl="space.php?do=activity";
 	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('activity')." where time>$_SGLOBAL[timestamp]"),0);
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where time>$_SGLOBAL[timestamp] order by dateline DESC LIMIT $start,$perpage ");
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where hide='1' and time>$_SGLOBAL[timestamp] order by dateline DESC LIMIT $start,$perpage ");
 	}
 		while ($value = $_SGLOBAL['db']->fetch_array($query)) {
 			$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('pic')." where picid=$value[picid]");

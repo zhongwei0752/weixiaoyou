@@ -8,8 +8,9 @@ if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
 $huodong=$_POST['huodong'];
-
+//插入
 if($huodong){
+	date_default_timezone_set('Asia/Shanghai');//设置时区
 	$subject = $_POST['subject'];
 	$place = $_POST['place'];
 	$callplace = $_POST['callplace'];
@@ -28,6 +29,40 @@ if($huodong){
 		echo "1";
 	}
 }
+//修改
+$modifyhuodong=$_POST['modifyhuodong'];
+if ($modifyhuodong) {
+	date_default_timezone_set('Asia/Shanghai');//设置时区
+	$subject = $_POST['subject'];
+	$place = $_POST['place'];
+	$callplace = $_POST['callplace'];
+	$time = strtotime($_POST['time']);
+	$dateline = $_SGLOBAL['timestamp'];
+	//$uid = $_SGLOBAL['supe_uid'];
+	$message = $_POST['message'];
+	$picid=$_POST['picid'];
+	$id=$_POST['id'];
+	if(empty($subject)||empty($time)||empty($place)||empty($callplace))
+	{
+		echo "-1";
+	}else{
+		$data=array('subject'=>$subject,'picid'=>$picid,'place'=>$place,'callplace'=>$callplace,'dateline'=>$dateline,'time'=>$time,'message'=>$message);
+		updatetable('activity',$data,array('id'=>$id));
+		//$id=inserttable("activity",array('subject'=>$subject,'picid'=>$picid,'place'=>$place,'callplace'=>$callplace,'uid'=>$uid,'dateline'=>$dateline,'time'=>$time,'message'=>$message),1);
+		include_once(S_ROOT.'./source/function_feed.php');
+		//feed_publish($id, 'activityid', $olds?0:1);
+		echo "1";
+	}
+}
+//删除
+$delete=$_POST['delete'];
+if ($delete) {
+	$id=$_POST['id'];
+	$data=array('hide'=>0);
+    updatetable('activity',$data,array('id'=>$id));
+    echo "1";
+}
+
 
 //提交订阅信息
 $menuset=$_POST['menuset'];
