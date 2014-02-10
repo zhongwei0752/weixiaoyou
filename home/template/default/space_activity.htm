@@ -213,7 +213,7 @@
                 <h3>扫描二维码报名（请注意个人隐私）</h3>
               </div>
 
-              <div class="modal-body" style='text-align:center;'>
+              <div class="modal-body" style='text-align:center;' id="qrcode">
                <img src="./template/default/img/loading1.gif">
               </div>
               <div class="modal-footer"><a data-dismiss="modal" class="btn btn-inverse" href="#">取消</a> </div>
@@ -296,7 +296,7 @@
                  data: "uid=$value[uid]&loginuid=$_SGLOBAL[supe_uid]&id=$value[id]&qr=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
                   async: true,                    
                     success: function (data) {
-                    $(".modal-body").html("<img src='"+data+"'>");
+                    $("#qrcode").html("<img src='"+data+"'>");
                     }
                   })
         });
