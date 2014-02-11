@@ -28,6 +28,15 @@ if($op=='me'){
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activity')." where hide='1' and time>$_SGLOBAL[timestamp] order by dateline DESC LIMIT $start,$perpage ");
 	}
 		while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+			//查询是否已报名
+			$query2 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('activityenlist')." where uid=$_SGLOBAL[supe_uid] and activityid=$value[id]");
+			$value2 = $_SGLOBAL['db']->fetch_array($query2);
+			if($value2){
+				$value['baoming']='1';//如果存在值，就说明已报名，为1
+			}else{
+				$value['baoming']='0';//反之亦然
+			}
+			//下面这个其实就是相同的原理，下面这个视察当前图片是否存在的
 			$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('pic')." where picid=$value[picid]");
 			$value1 = $_SGLOBAL['db']->fetch_array($query1);
 			if($value1['filepath']){
@@ -37,6 +46,7 @@ if($op=='me'){
 			
 			$list[]=$value;
 		}
+
 $multi = multi($count, $perpage, $page, $theurl);
 include_once template("space_activity");
 
