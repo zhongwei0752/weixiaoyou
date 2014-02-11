@@ -25,7 +25,7 @@ if($sed_jiaoyi){
 	{
 		echo "-1";
 	}else{
-		$id=inserttable("second",array('sed_subject'=>$sed_subject,'sed_picid'=>$sed_picid,'sed_price'=>$sed_price,'sed_message'=>$sed_message,'uid'=>$uid,'sed_dateline'=>$sed_dateline,'sed_time'=>$sed_time),1);
+		$id=inserttable("second",array('sed_subject'=>$sed_subject,'sed_hide'=>1,'sed_picid'=>$sed_picid,'sed_price'=>$sed_price,'sed_message'=>$sed_message,'uid'=>$uid,'sed_dateline'=>$sed_dateline,'sed_time'=>$sed_time),1);
 		include_once(S_ROOT.'./source/function_feed.php');
 		feed_publish($id, 'activityid', $olds?0:1);
 		echo "1";
