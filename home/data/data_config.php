@@ -100,12 +100,13 @@ $_SCONFIG=Array
 			'click' => 1
 			)
 		),
-	'cronnextrun' => 1391865600,
+	'cronnextrun' => 1392100800,
 	'my_status' => '0',
 	'uniqueemail' => 1,
 	'updatestat' => 1,
 	'my_showgift' => 1,
 	'topcachetime' => 60,
-	'newspacenum' => 3
+	'newspacenum' => 3,
+	'sitekey' => 'c49ccf62952op99z'
 	)
 ?>

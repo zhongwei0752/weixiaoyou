@@ -4,9 +4,6 @@
 	$Id: cp_upload.php 13245 2009-08-25 02:01:40Z liguode $
 */
 
-if(!defined('IN_UCHOME')) {
-	exit('Access Denied');
-}
 
 $albumid = empty($_GET['albumid'])?0:intval($_GET['albumid']);
 $eventid = empty($_GET['eventid'])?0:intval($_GET['eventid']);
@@ -162,16 +159,6 @@ if(submitcheck('albumsubmit')) {
 	//上传图片
 	$albumid = $picid = 0;
 
-	if(!checkperm('allowupload')) {
-		if($_SGLOBAL['mobile']) {
-			showmessage(cplang('not_allow_upload'));
-		} else {
-			echo "<script>";
-			echo "alert(\"".cplang('not_allow_upload')."\")";
-			echo "</script>";
-			exit();
-		}
-	}
 
 	//上传
 	$_POST['topicid'] = topic_check($_POST['topicid'], 'pic');

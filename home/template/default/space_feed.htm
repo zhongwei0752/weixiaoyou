@@ -153,7 +153,7 @@
                     　　jquery('#fileinput_').uploadify({
                      　　//以下参数均是可选
                      　　'swf' : 'uploadify.swf', //指定上传控件的主体文件，默认'uploader.swf'
-                     　　'uploader' : 'cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
+                     　　'uploader' : './cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
                       'checkScript' : true,
                      　　'cancelimg' : 'swfupload/uploadify-cancel.png', //指定取消上传的图片，默认'cancel.png'
                      　　//'buttonimg':'swfupload/upload2.jpg',
@@ -168,7 +168,6 @@
                       　　  //jquery('#image').attr("src","<%=basepath%>userphoto/"+res ponse);
                       　　  //jquery('#image').show();
                       　　  //jquery('#photo').attr("value",response);
-                        
                           data = eval("(" + data + ')');
                         
                         jquery("#optionimga_").attr("src",data.pic);

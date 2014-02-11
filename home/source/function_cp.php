@@ -39,11 +39,6 @@ function pic_save($FILE, $albumid, $title, $topicid=0) {
 		$space = getspace($_SGLOBAL['supe_uid']);
 	}
 	
-	//用户组
-	if(!checkperm('allowupload')) {
-		ckspacelog();
-		return cplang('inadequate_capacity_space');
-	}
 	
 	//实名认证
 	if(!ckrealname('album', 1)) {

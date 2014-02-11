@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_feed|template/default/header|template/default/space_feed_li|template/default/footer', '1391865444', 'template/default/space_feed');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_feed|template/default/header|template/default/space_feed_li|template/default/footer', '1392100790', 'template/default/space_feed');?><!DOCTYPE html>
 <html lang="en">
 <head>
 <title>微校友</title>
@@ -68,7 +68,12 @@
         <?php if($_GET['do']=='activity'&&$_GET['op']=='me') { ?><li class="active"><?php } else { ?><li><?php } ?><a href="space.php?do=activity&op=me">我的活动</a></li>
       </ul>
   </li>
-    <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>
+    <?php if($_GET['do']=='second') { ?><li class="submenu open"><?php } else { ?><li class="submenu"><?php } ?> <a href="second.php?do=second"><i class="icon icon-inbox"></i> <span>二手市场</span></a> 
+      <ul>
+         <?php if($_GET['do']=='second'&&$_GET['op']!='me') { ?><li class="active"><?php } else { ?><li><?php } ?><a href="second.php?do=second">正在进行中的交易</a></li>
+        <?php if($_GET['do']=='second'&&$_GET['op']=='me') { ?><li class="active"><?php } else { ?><li><?php } ?><a href="second.php?do=second&op=me">我的交易</a></li>
+      </ul>
+  </li>
     <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
     <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span class="label label-important">3</span></a>
@@ -145,14 +150,14 @@
         <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>
         <li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>
         <li class="bg_lo span3"> <a href="#myModal" data-toggle="modal"> <i class="icon-th-list"></i>发布活动</a> </li>
-        <li class="bg_ls"> <a href="buttons.html"> <i class="icon-tint"></i> Buttons</a> </li>
+        <li class="bg_ls"> <a href="#secondmyModal" data-toggle="modal"> <i class="icon-tint"></i>发布二手信息</a> </li>
         <li class="bg_lb"> <a href="interface.html"> <i class="icon-pencil"></i>Elements</a> </li>
         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li>
         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li>
 
       </ul>
     </div>
-<!--End-Action boxes-->    
+<!--End-Action boxes--> 
 <div id="myModal" class="modal hide" style="width:1000px;left:40%;">
           <div class="widget-content tab-content" style="padding: 0px;height:500px;">
               <div id="tab1" class="tab-pane active">
@@ -187,7 +192,7 @@
                <button type="submit" id="huodong" class="btn btn-success">发布</button>
                <button type="reset" class="btn btn-success">重置</button>
              </div>
-              </div>
+          </div>
 
               <!-- <div id="tab2" class="tab-pane">
                 <div class="modal-header">
@@ -208,11 +213,57 @@
                   <button type="reset" class="btn btn-success">重置</button>
                   <a data-toggle="tab" href="#tab1">简单版</a>
               </div>
-              </div> -->
-              
-          </div>
-             
-            </div>
+              </div> -->            
+          </div>  
+
+
+            
+
+
+
+</div>
+
+<!-- 楼下是二手信息发布 -->
+<div id="secondmyModal" class="modal hide" style="width:1000px;left:40%;">
+   <div class="widget-content tab-content" style="padding:0px;height:500px;">
+     <div class="modal-header">
+          <button data-dismiss="modal" class="close" type="button">x</button>
+          <h3>交易信息</h3>
+     </div>
+     <div style="width:100%;height:400px;">
+        <div class="modal-body" style="text-align:center;overflow-y:hidden;float:left;width:500px;padding:0px;margin-top:10px;border-right:1px solid #CDCDCD;">
+             <p>交易标题：<input style="margin-left:6px;" type="text" name="sed_subject" id="sed_subject" placeholder="一个好标题可以很有吸引力的哦。">
+             </p>
+             <p>交易价格：<input style="margin-left:6px;" type="text" name="sed_price" id="sed_price" placeholder="马年搵大钱！">             
+             </p>
+             <p>
+              <div class="input-group date form_datetime col-md-5"  data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                    
+                    截止时间：<input class="form-control" size="12" style="width:209px;margin-left:10px;" id="sed_dateline" type="text" value="" placeholder="点击选择时间，我好调闹钟。" readonly>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span> 
+                </div>
+             </p>
+             <p>交易详情：<textarea style="margin-left:6px;width:208px;" rows="5" cols="10" name="sed_message" id="sed_message" placeholder="还有什么想说的，不怕说。"></textarea></p>
+        </div>
+          <!-- 上传图片 -->
+        <div class="modal-body" style="text-align:center;overflow-y:hidden;">
+           <div style=" float:left;width:100px;padding-top:20%;">
+                <input type="file" name="attach_" value="上传图片" class="button" id="secondfileinput_" >
+                <input name="pics" id="pics_" type="hidden" value="" >
+           </div>
+           <div style="padding-top:20%;">
+                <img src="" id="optionimga_" style="display:none;float:left"/>
+           </div>
+        </div>
+     </div>
+     <div style="width:100%;text-align:center;">
+               <button type="submit" id="sed_jiaoyi" class="btn btn-success">发布</button>
+               <button type="reset" class="btn btn-success">重置</button>
+     </div>
+   </div>
+</div>
+<!-- 二手市场发布终止 -->
 
             <script language="javascript" src="swfupload/jquery.uploadify-3.1.min.js"></script>
             <link href="swfupload/uploadify.css" rel="stylesheet" type="text/css">
@@ -221,6 +272,45 @@
                   jquery(document).ready(function() {
                         
                     　　jquery('#fileinput_').uploadify({
+                     　　//以下参数均是可选
+                     　　'swf' : 'uploadify.swf', //指定上传控件的主体文件，默认'uploader.swf'
+                     　　'uploader' : './cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
+                      'checkScript' : true,
+                     　　'cancelimg' : 'swfupload/uploadify-cancel.png', //指定取消上传的图片，默认'cancel.png'
+                     　　//'buttonimg':'swfupload/upload2.jpg',
+                     　　'auto' : true, //选定文件后是否自动上传，默认false
+                     　　//'folder' : '/userphoto' , //要上传到的服务器路径，默认'/'
+                     　　'multi' : false, //是否允许同时上传多文件，默认false
+                     　　'filedesc' : '图片文件' , //出现在上传对话框中的文件类型描述
+                     　　'fileext' : '*.jpg;*.bmp;*.png;*.gif', //控制可上传文件的扩展名，启用本项时需同时声明filedesc
+                     　　'sizelimit': 86400, //控制上传文件的大小，单位byte
+                      'formData': { 'uploadsubmit2': 'true', 'albumid':'0', 'formhash':'<?php echo formhash(); ?>', 'index':'1', 'ac':'upload', 'uid' : '<?=$_SGLOBAL['supe_uid']?>',"session":"<?php echo session_id()?>"},
+                     　　'onUploadSuccess': function(file, data, response) {
+                      　　  //jquery('#image').attr("src","<%=basepath%>userphoto/"+res ponse);
+                      　　  //jquery('#image').show();
+                      　　  //jquery('#photo').attr("value",response);
+                          data = eval("(" + data + ')');
+                        
+                        jquery("#optionimga_").attr("src",data.pic);
+                        jquery("#optionimga_").show();
+                        jquery("#pics_").val(data.picid);
+                        var astr = '<a href="#" id="delete" onclick="deletepic();">删除</a>';
+                        jquery("#optionimga_").parent().append(astr);
+                        
+                     　　},
+                      'onUploadComplete': function(file){
+                        jquery('#fileinput_').hide();
+                        
+                      },
+                      'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                        alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                      },
+                      'fileObjName':'attach',
+                     　　'onUploadError' : function(file, errorCode, errorMsg, errorString){
+                     　　 alert("文件:" + file.name + " 上传失败");
+                     　　}
+                    　　});
+      jquery('#secondfileinput_').uploadify({//重复的上图图片代码，由于仅能唯一ID
                      　　//以下参数均是可选
                      　　'swf' : 'uploadify.swf', //指定上传控件的主体文件，默认'uploader.swf'
                      　　'uploader' : 'cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
@@ -265,6 +355,8 @@
                
             </script>
     <hr/>
+
+
     <div class="row-fluid">
       <div class="span6">
         <div class="widget-box">
@@ -703,7 +795,34 @@
 
     });
   $(document).ready(function () {
-    
+    $("#sed_jiaoyi").click(function(){//二手洗洗脑发布
+     // alert("123");
+      $.ajax({
+                type:"POST",
+                url:"second.php?do=deal",
+                data:"sed_subject="+$('#sed_subject').val()+"&sed_price="+$('#sed_price').val()+"&sed_dateline="+$('#sed_dateline').val()+"&sed_message="+$('#sed_message').val()+"&picid="+$('#pics_').val()+"&sed_jiaoyi=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                async:true,
+                                                   
+                    success: function (data) {
+                      if(data=='-1')
+                      {
+                        alert("选项有空值");
+                      }else{
+                        $("#jiaoyimyModal").hide();
+                        $(".modal-backdrop").hide();
+                        $.gritter.add({
+                          title:  '',
+                          text: '交易信息发布成功',
+                          sticky: false
+                        }); 
+                      }
+                    }
+        })
+     });
+
+
+
+
     $("#huodong").click(function () {
       $.ajax({
                  type: "POST",
