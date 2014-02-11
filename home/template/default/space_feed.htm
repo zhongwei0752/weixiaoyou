@@ -63,10 +63,13 @@
               <div class="modal-body" style="text-align:center;overflow-y:hidden;">
               <div style=" float:left;width:100px;padding-top:20%;"><input type="file" name="attach_" value="上传图片" class="button" id="fileinput_" >
               <input name="pics" id="pics_" type="hidden" value="" ></div>
-              <div style="padding-top:20%;"><img src="" id="optionimga_" style="display:none;float:left"/></div></div>
-                  <!-- <a data-toggle="tab" href="#tab2">复杂版</a> -->
+              <div style="padding-top:20%;">
+                <img src="" id="optionimga_" style="display:none;float:left"/>
               </div>
             </div>
+                  <!-- <a data-toggle="tab" href="#tab2">复杂版</a> -->
+          </div>
+        </div>
               <div style="width:100%;text-align:center;">
                <button type="submit" id="huodong" class="btn btn-success">发布</button>
                <button type="reset" class="btn btn-success">重置</button>
@@ -94,12 +97,6 @@
               </div>
               </div> -->            
           </div>  
-
-
-            
-
-
-
 </div>
 
 <!-- 楼下是二手信息发布 -->
@@ -129,10 +126,10 @@
         <div class="modal-body" style="text-align:center;overflow-y:hidden;">
            <div style=" float:left;width:100px;padding-top:20%;">
                 <input type="file" name="attach_" value="上传图片" class="button" id="secondfileinput_" >
-                <input name="pics" id="pics_" type="hidden" value="" >
+                <input name="pics" id="sedpics_" type="hidden" value="" >
            </div>
            <div style="padding-top:20%;">
-                <img src="" id="optionimga_" style="display:none;float:left"/>
+                <img src="" id="sedoptionimga_" style="display:none;float:left"/>
            </div>
         </div>
      </div>
@@ -189,10 +186,11 @@
                      　　 alert("文件:" + file.name + " 上传失败");
                      　　}
                     　　});
+
       jquery('#secondfileinput_').uploadify({//重复的上图图片代码，由于仅能唯一ID
                      　　//以下参数均是可选
                      　　'swf' : 'uploadify.swf', //指定上传控件的主体文件，默认'uploader.swf'
-                     　　'uploader' : 'cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
+                     　　'uploader' : './cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
                       'checkScript' : true,
                      　　'cancelimg' : 'swfupload/uploadify-cancel.png', //指定取消上传的图片，默认'cancel.png'
                      　　//'buttonimg':'swfupload/upload2.jpg',
@@ -210,15 +208,15 @@
                         
                           data = eval("(" + data + ')');
                         
-                        jquery("#optionimga_").attr("src",data.pic);
-                        jquery("#optionimga_").show();
-                        jquery("#pics_").val(data.picid);
+                        jquery("#sedoptionimga_").attr("src",data.pic);
+                        jquery("#sedoptionimga_").show();
+                        jquery("#sedpics_").val(data.picid);
                         var astr = '<a href="#" id="delete" onclick="deletepic();">删除</a>';
-                        jquery("#optionimga_").parent().append(astr);
+                        jquery("#sedoptionimga_").parent().append(astr);
                         
                      　　},
                       'onUploadComplete': function(file){
-                        jquery('#fileinput_').hide();
+                        jquery('#secondfileinput_').hide();
                         
                       },
                       'onUploadError' : function(file, errorCode, errorMsg, errorString) {
@@ -571,7 +569,7 @@
       $.ajax({
                 type:"POST",
                 url:"second.php?do=deal",
-                data:"sed_subject="+$('#sed_subject').val()+"&sed_price="+$('#sed_price').val()+"&sed_dateline="+$('#sed_dateline').val()+"&sed_message="+$('#sed_message').val()+"&picid="+$('#pics_').val()+"&sed_jiaoyi=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                data:"sed_subject="+$('#sed_subject').val()+"&sed_price="+$('#sed_price').val()+"&sed_dateline="+$('#sed_dateline').val()+"&sed_message="+$('#sed_message').val()+"&picid="+$('#sedpics_').val()+"&sed_jiaoyi=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
                 async:true,
                                                    
                     success: function (data) {
@@ -579,7 +577,7 @@
                       {
                         alert("选项有空值");
                       }else{
-                        $("#jiaoyimyModal").hide();
+                        $("#secondmyModal").hide();
                         $(".modal-backdrop").hide();
                         $.gritter.add({
                           title:  '',

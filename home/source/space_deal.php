@@ -23,7 +23,7 @@ if($huodong){
 	{
 		echo "-1";
 	}else{
-		$id=inserttable("activity",array('subject'=>$subject,'picid'=>$picid,'place'=>$place,'callplace'=>$callplace,'uid'=>$uid,'dateline'=>$dateline,'time'=>$time,'message'=>$message),1);
+		$id=inserttable("activity",array('subject'=>$subject,'hide'=>1,'picid'=>$picid,'place'=>$place,'callplace'=>$callplace,'uid'=>$uid,'dateline'=>$dateline,'time'=>$time,'message'=>$message),1);
 		include_once(S_ROOT.'./source/function_feed.php');
 		feed_publish($id, 'activityid', $olds?0:1);
 		echo "1";
@@ -62,7 +62,16 @@ if ($delete) {
     updatetable('activity',$data,array('id'=>$id));
     echo "1";
 }
-
+//报名
+$enlist=$_POST['enlist'];
+if ($enlist) {
+	$uid = $_SGLOBAL['supe_uid'];
+	$activityid=$_POST['id'];
+	$id=inserttable("activityenlist",array('activityid'=>$activityid,'uid'=>$uid),1);
+    //include_once(S_ROOT.'./source/function_feed.php');
+    //feed_publish($id, 'activityid', $olds?0:1);
+	echo "1";
+}
 
 //提交订阅信息
 $menuset=$_POST['menuset'];
