@@ -23,7 +23,7 @@
   <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
+        <li class="bg_lb"> <a href="cp.php?ac=sedfabu"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> 二手信息发布cp版 </a> </li>
         <li class="bg_lg span3"> <a href="charts.html"> <i class="icon-signal"></i> Charts</a> </li>
         <li class="bg_ly"> <a href="widgets.html"> <i class="icon-inbox"></i><span class="label label-success">101</span> Widgets </a> </li>
         <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>
@@ -34,7 +34,7 @@
         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li>
         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li>
 
-      </ul>
+      </ul>  
     </div>
 <!--End-Action boxes--> 
 <div id="myModal" class="modal hide" style="width:1000px;left:40%;">
@@ -109,11 +109,11 @@
      <div style="width:100%;height:400px;">
         <div class="modal-body" style="text-align:center;overflow-y:hidden;float:left;width:500px;padding:0px;margin-top:10px;border-right:1px solid #CDCDCD;">
              <p>交易标题：<input style="margin-left:6px;" type="text" name="sed_subject" id="sed_subject" placeholder="一个好标题可以很有吸引力的哦。">
-             </p>
+            
              <p>交易价格：<input style="margin-left:6px;" type="text" name="sed_price" id="sed_price" placeholder="马年搵大钱！">             
              </p>
              <p>
-              <div class="input-group date form_datetime col-md-5"  data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+              <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
                     
                     截止时间：<input class="form-control" size="12" style="width:209px;margin-left:10px;" id="sed_dateline" type="text" value="" placeholder="点击选择时间，我好调闹钟。" readonly>
                   <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -140,7 +140,12 @@
    </div>
 </div>
 <!-- 二手市场发布终止 -->
-
+<script type="text/javascript">  
+      window.onload=function(){  
+          $('.selectpicker').selectpicker();  
+          prettyPrint();  
+      };  
+    </script>  
             <script language="javascript" src="swfupload/jquery.uploadify-3.1.min.js"></script>
             <link href="swfupload/uploadify.css" rel="stylesheet" type="text/css">
             <script language="javascript">var jquery = jQuery.noConflict(); </script>
@@ -568,7 +573,7 @@
      // alert("123");
       $.ajax({
                 type:"POST",
-                url:"second.php?do=deal",
+                url:"space.php?do=seddeal",
                 data:"sed_subject="+$('#sed_subject').val()+"&sed_price="+$('#sed_price').val()+"&sed_dateline="+$('#sed_dateline').val()+"&sed_message="+$('#sed_message').val()+"&picid="+$('#sedpics_').val()+"&sed_jiaoyi=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
                 async:true,
                                                    
@@ -577,6 +582,7 @@
                       {
                         alert("选项有空值");
                       }else{
+                        alert(data);
                         $("#secondmyModal").hide();
                         $(".modal-backdrop").hide();
                         $.gritter.add({
