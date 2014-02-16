@@ -7,9 +7,10 @@
 if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
-$op=$_GET['op'];
-$to=$_GET['to'];
-//分页
+//$op=$_GET['op'];
+
+
+/*//分页
 $page = empty($_GET['page'])?1:intval($_GET['page']);
 if($page<1) $page=1;
 $perpage = 10;
@@ -18,20 +19,10 @@ $start = ($page-1)*$perpage;
 ckstart($start, $perpage);
 if($op=='me'){
 //我的活动
-	if ($to=='shoucang') {
-	$theurl="second.php?do=second";
-	
-	$shoucangquery = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second_shoucang')." where uid=$_SGLOBAL[supe_uid]");
-	$shoucangvalue = $_SGLOBAL['db']->fetch_array($shoucangquery);
-    $count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where id=$shoucangvalue[sed_id] and sed_time>$_SGLOBAL[timestamp]"),0);
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second')." where sed_hide='1' and id=$shoucangvalue[sed_id]");
-
-
-	}else{
 	$theurl="second.php?do=second";
 	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where sed_time>$_SGLOBAL[timestamp]"),0);
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second')." where sed_hide='1' and uid=$_SGLOBAL[supe_uid] order by sed_dateline DESC LIMIT $start,$perpage ");
-}	
+
 }else{
 	$theurl="second.php?do=second";
 	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where sed_time>$_SGLOBAL[timestamp]"),0);
@@ -47,8 +38,23 @@ if($op=='me'){
 			
 			$list[]=$value;
 		}
-$multi = multi($count, $perpage, $page, $theurl);
-include_once template("second_second");
+$multi = multi($count, $perpage, $page, $theurl);*/
+
+$secondid=$_GET['secondid'];
+//$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where sed_time>$_SGLOBAL[timestamp]"),0);
+$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second')." where sed_hide='1' and id='".$secondid."'");
+while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+			$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('pic')." where picid=$value[sed_picid]");
+			$value1 = $_SGLOBAL['db']->fetch_array($query1);
+			if($value1['filepath']){
+				$value['thumbpic']="./attachment/".$value1['filepath'].".thumb.jpg";
+				$value['pic']="./attachment/".$value1['filepath'];
+			}
+			
+			$list[]=$value;
+		}
+
+include_once template("space_seddetails");
 
 
 

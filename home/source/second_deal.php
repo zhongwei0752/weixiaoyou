@@ -8,10 +8,11 @@ if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
 
+date_default_timezone_set('Asia/Shanghai');//设置时区
+
 //插入信息
 $sed_jiaoyi=$_POST['sed_jiaoyi'];
-if($sed_jiaoyi){
-    date_default_timezone_set('Asia/Shanghai');//设置时区
+if($sed_jiaoyi){  
 	$sed_subject = $_POST['sed_subject'];
 	$sed_price = $_POST['sed_price'];
 	$sed_message = $_POST['sed_message'];
@@ -67,7 +68,17 @@ if ($sed_delete) {
     echo "1";
 }
 
-
+//收藏
+$shoucang=$_POST['shoucang'];
+if ($shoucang) {
+	$sed_id=$_POST['id'];
+	$uid = $_SGLOBAL['supe_uid'];
+	$sed_time =strtotime(date('Y-m-d H:i:s'), $now);
+	inserttable("second_shoucang",array('sed_id'=>$sed_id,'uid'=>$uid,'sed_time'=>$sed_time),1);
+	include_once(S_ROOT.'./source/function_feed.php');
+	feed_publish($id, 'activityid', $olds?0:1);
+	echo "1";
+}
 
 //include_once template("second_second");
 
