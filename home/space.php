@@ -33,7 +33,7 @@ if($_SCONFIG['allowrewrite'] && isset($_GET['rewrite'])) {
 
 //ÔÊÐí¶¯×÷
 $dos = array('feed', 'doing', 'mood', 'blog', 'album', 'thread', 'mtag', 'friend', 'wall', 'tag', 'notice', 'share', 'topic', 'home', 
-	'pm', 'event', 'poll', 'top', 'info', 'videophoto','deal','activity','menuset','test');
+	'pm', 'event', 'poll', 'top', 'info', 'videophoto','deal','second','seddeal','seddetails','activity','menuset','test');
 
 //»ñÈ¡±äÁ¿
 $isinvite = 0;
