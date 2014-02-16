@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2014-02-11 21:38:16
+Date: 2014-02-17 01:00:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -6265,17 +6265,19 @@ CREATE TABLE `uchome_activity` (
   `picid` smallint(6) NOT NULL,
   `hide` smallint(6) default '1' COMMENT '1 --显示，0--隐藏',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchome_activity
 -- ----------------------------
-INSERT INTO `uchome_activity` VALUES ('38', '333', '1', '1392101751', '1392191700', '333333', '333', '3333 ', '43', '0');
-INSERT INTO `uchome_activity` VALUES ('35', '1', '1', '1391952796', '1392211200', '1', '1', '1 ', '0', '0');
-INSERT INTO `uchome_activity` VALUES ('36', '2', '1', '1391948125', '1393073400', '2', '2', '2 ', '0', '0');
-INSERT INTO `uchome_activity` VALUES ('37', '3', '1', '1391948143', '1393581300', '33', '3', '3 ', '0', '0');
-INSERT INTO `uchome_activity` VALUES ('39', 'aaaaa', '1', '1392103215', '1392189300', 'aaaa', 'aaaa', 'aaaa ', '51', '0');
+INSERT INTO `uchome_activity` VALUES ('38', '333', '1', '1392101751', '1392191700', '333333', '333', '3333 ', '43', '1');
+INSERT INTO `uchome_activity` VALUES ('35', '1', '1', '1391952796', '1392211200', '1', '1', '1 ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('36', '2', '1', '1391948125', '1393073400', '2', '2', '2 ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('37', '3', '1', '1391948143', '1393581300', '33', '3', '3 ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('39', 'aaaaa', '1', '1392103215', '1392189300', 'aaaa', 'aaaa', 'aaaa ', '51', '1');
 INSERT INTO `uchome_activity` VALUES ('40', '555', '1', '1392119846', '1393588500', '5555', '555', '555 ', '61', '0');
+INSERT INTO `uchome_activity` VALUES ('41', 'wqe', '1', '1392188021', '1393483800', 'qwe', 'e', 'qew ', '62', '0');
+INSERT INTO `uchome_activity` VALUES ('42', '滚滚滚滚滚', '1', '1392561297', '1393597800', '　他，是电视剧《将爱情进行到底》中纯情的雨森。是电视剧《像雾像雨又像风》中的大反派吴伯平。他，是电影《让子弹飞》中的老三。他就是演员，廖凡。虽然塑造了很多的荧幕形象，廖凡', '滚滚滚滚滚滚', '滚滚滚滚滚滚 ', '71', '1');
 INSERT INTO `uchome_activity` VALUES ('18', '657567', '1', '1390732274', '1390761060', '75675', '567567', '575 ', '0', '1');
 INSERT INTO `uchome_activity` VALUES ('19', '567567', '1', '1390732327', '1390761060', '5675675', '6576575', '567567 ', '0', '1');
 INSERT INTO `uchome_activity` VALUES ('20', '567657', '1', '1390732394', '1390761180', '567567', '567657', '567657 ', '0', '1');
@@ -6287,11 +6289,11 @@ INSERT INTO `uchome_activity` VALUES ('25', '6765', '1', '1390877618', '13909063
 INSERT INTO `uchome_activity` VALUES ('26', '453', '1', '1390877657', '1390906440', '45345', '3453', '453 ', '0', '1');
 INSERT INTO `uchome_activity` VALUES ('27', '14年的王道全书怎么回事了？', '1', '1391755866', '1391784600', 'ggg', 'gg', 'gg ', '29', '1');
 INSERT INTO `uchome_activity` VALUES ('28', '哈哈哈打发打发打发', '8888', '1391864832', '1393611900', '佛挡杀佛斯蒂芬斯蒂芬', '佛挡杀佛', '发生的 ', '0', '1');
-INSERT INTO `uchome_activity` VALUES ('29', '9999', '1', '1391945175', '1392255900', '9999999', '活动地点9999', '集合地点99999            ', '0', '1');
-INSERT INTO `uchome_activity` VALUES ('30', '6666666666666', '1', '1391945198', '1392284700', '66666', '活动地点6666666666666', '集合地点 666666                  ', '0', '1');
-INSERT INTO `uchome_activity` VALUES ('31', '0000', '2', '1391945230', '1392204900', '999999966666', '活动地点0000', '集合地点00000      ', '0', '1');
-INSERT INTO `uchome_activity` VALUES ('32', '333333', '1', '1391952856', '1392039000', '33333', '3333', '3333 ', '0', '1');
-INSERT INTO `uchome_activity` VALUES ('33', '1111', '1', '1391949357', '1392120000', '1111', '111', '111 ', '0', '0');
+INSERT INTO `uchome_activity` VALUES ('29', '9999', '1', '1391945175', '1393611900', '9999999', '活动地点9999', '集合地点99999            ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('30', '6666666666666', '1', '1391945198', '1393611900', '66666', '活动地点6666666666666', '集合地点 666666                  ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('31', '0000', '2', '1391945230', '1393611900', '999999966666', '活动地点0000', '集合地点00000      ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('32', '333333', '1', '1391952856', '1393611900', '33333', '3333', '3333 ', '0', '1');
+INSERT INTO `uchome_activity` VALUES ('33', '1111', '1', '1391949357', '1393611900', '1111', '111', '111 ', '0', '1');
 
 -- ----------------------------
 -- Table structure for `uchome_activityenlist`
@@ -6302,15 +6304,11 @@ CREATE TABLE `uchome_activityenlist` (
   `activityid` smallint(8) NOT NULL,
   `uid` mediumint(9) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchome_activityenlist
 -- ----------------------------
-INSERT INTO `uchome_activityenlist` VALUES ('20', '31', '1');
-INSERT INTO `uchome_activityenlist` VALUES ('23', '30', '1');
-INSERT INTO `uchome_activityenlist` VALUES ('24', '29', '1');
-INSERT INTO `uchome_activityenlist` VALUES ('25', '40', '1');
 
 -- ----------------------------
 -- Table structure for `uchome_ad`
@@ -6684,7 +6682,7 @@ INSERT INTO `uchome_config` VALUES ('feedhotmin', '3');
 INSERT INTO `uchome_config` VALUES ('feedhiddenicon', 'friend,profile,task,wall');
 INSERT INTO `uchome_config` VALUES ('uc_tagrelatedtime', '86400');
 INSERT INTO `uchome_config` VALUES ('privacy', 'a:2:{s:4:\"view\";a:12:{s:5:\"index\";i:0;s:7:\"profile\";i:0;s:6:\"friend\";i:0;s:4:\"wall\";i:0;s:4:\"feed\";i:0;s:4:\"mtag\";i:0;s:5:\"event\";i:0;s:5:\"doing\";i:0;s:4:\"blog\";i:0;s:5:\"album\";i:0;s:5:\"share\";i:0;s:4:\"poll\";i:0;}s:4:\"feed\";a:21:{s:5:\"doing\";i:1;s:4:\"blog\";i:1;s:6:\"upload\";i:1;s:5:\"share\";i:1;s:4:\"poll\";i:1;s:8:\"joinpoll\";i:1;s:6:\"thread\";i:1;s:4:\"post\";i:1;s:4:\"mtag\";i:1;s:5:\"event\";i:1;s:4:\"join\";i:1;s:6:\"friend\";i:1;s:7:\"comment\";i:1;s:4:\"show\";i:1;s:9:\"spaceopen\";i:1;s:6:\"credit\";i:1;s:6:\"invite\";i:1;s:4:\"task\";i:1;s:7:\"profile\";i:1;s:5:\"album\";i:1;s:5:\"click\";i:1;}}');
-INSERT INTO `uchome_config` VALUES ('cronnextrun', '1392124500');
+INSERT INTO `uchome_config` VALUES ('cronnextrun', '1392570000');
 INSERT INTO `uchome_config` VALUES ('my_status', '0');
 INSERT INTO `uchome_config` VALUES ('uniqueemail', '1');
 INSERT INTO `uchome_config` VALUES ('updatestat', '1');
@@ -6718,7 +6716,7 @@ CREATE TABLE `uchome_creditlog` (
 -- Records of uchome_creditlog
 -- ----------------------------
 INSERT INTO `uchome_creditlog` VALUES ('1', '1', '1', '1', '1', '10', '0', '0', '', '', '', '1387876401');
-INSERT INTO `uchome_creditlog` VALUES ('2', '1', '10', '17', '1', '15', '15', '0', '', '', '', '1392100161');
+INSERT INTO `uchome_creditlog` VALUES ('2', '1', '10', '22', '1', '15', '15', '0', '', '', '', '1392566715');
 
 -- ----------------------------
 -- Table structure for `uchome_creditrule`
@@ -6813,11 +6811,11 @@ CREATE TABLE `uchome_cron` (
 -- ----------------------------
 -- Records of uchome_cron
 -- ----------------------------
-INSERT INTO `uchome_cron` VALUES ('1', '1', 'system', '更新浏览数统计', 'log.php', '1392124484', '1392124500', '-1', '-1', '-1', '0	5	10	15	20	25	30	35	40	45	50	55');
-INSERT INTO `uchome_cron` VALUES ('2', '1', 'system', '清理过期feed', 'cleanfeed.php', '1392100281', '1392145440', '-1', '-1', '3', '4');
-INSERT INTO `uchome_cron` VALUES ('3', '1', 'system', '清理个人通知', 'cleannotification.php', '1392100284', '1392152760', '-1', '-1', '5', '6');
-INSERT INTO `uchome_cron` VALUES ('4', '1', 'system', '同步UC的feed', 'getfeed.php', '1392124479', '1392124620', '-1', '-1', '-1', '2	7	12	17	22	27	32	37	42	47	52');
-INSERT INTO `uchome_cron` VALUES ('5', '1', 'system', '清理脚印和最新访客', 'cleantrace.php', '1392100274', '1392141780', '-1', '-1', '2', '3');
+INSERT INTO `uchome_cron` VALUES ('1', '1', 'system', '更新浏览数统计', 'log.php', '1392569761', '1392570000', '-1', '-1', '-1', '0	5	10	15	20	25	30	35	40	45	50	55');
+INSERT INTO `uchome_cron` VALUES ('2', '1', 'system', '清理过期feed', 'cleanfeed.php', '1392557143', '1392577440', '-1', '-1', '3', '4');
+INSERT INTO `uchome_cron` VALUES ('3', '1', 'system', '清理个人通知', 'cleannotification.php', '1392557150', '1392584760', '-1', '-1', '5', '6');
+INSERT INTO `uchome_cron` VALUES ('4', '1', 'system', '同步UC的feed', 'getfeed.php', '1392569749', '1392570120', '-1', '-1', '-1', '2	7	12	17	22	27	32	37	42	47	52');
+INSERT INTO `uchome_cron` VALUES ('5', '1', 'system', '清理脚印和最新访客', 'cleantrace.php', '1392557137', '1392573780', '-1', '-1', '2', '3');
 
 -- ----------------------------
 -- Table structure for `uchome_data`
@@ -7046,26 +7044,41 @@ CREATE TABLE `uchome_feed` (
   KEY `dateline` (`dateline`),
   KEY `hot` (`hot`),
   KEY `id` (`id`,`idtype`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchome_feed
 -- ----------------------------
-INSERT INTO `uchome_feed` VALUES ('18', '1', 'activity', '1', 'admin', '1391755866', '0', 'b655fd371d99a6252d359860a6c6301d', '13e45d0116cba2a65e01cc0866fcd2c0', '<a href=\'space.php?do=activity\'>admin 发布了新活动“14年的王道全书怎么回事了？”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('19', '1', 'activity', '1', 'admin', '1391864832', '0', 'cde293c52509c8661fa7cac3797cbb8f', '347d76729c11986c8d0d112b0831e76d', '<a href=\'space.php?do=activity\'>admin 发布了新活动“哈哈哈打发打发打发”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('20', '1', 'activity', '1', 'admin', '1391865475', '0', 'd04609c207a7978987d4682461aed085', 'c1773da53647c91162bd92624722c788', '<a href=\'space.php?do=activity\'>admin 发布了新活动“嘿嘿嘿”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('21', '1', 'activity', '1', 'admin', '1391925372', '0', '95af79a2175720649e9b2eab01da2c36', '429f2641adde07c5bcc364aaf2203e35', '<a href=\'space.php?do=activity\'>admin 发布了新活动“广告歌”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('22', '1', 'activity', '1', 'admin', '1391927682', '0', 'e2f87d996e8f9c60fc8e91c846af1288', 'd6938b50b93e3c25b6b763fd0fbb2346', '<a href=\'space.php?do=activity\'>admin 发布了新活动“标题”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('23', '1', 'activity', '1', 'admin', '1391945284', '0', 'fe97c802eae1ae86c53f723be6ffffb0', '768fe2d33827b2eb49adb27c9f7093f6', '<a href=\'space.php?do=activity\'>admin 发布了新活动“333333”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('24', '1', 'activity', '1', 'admin', '1391945407', '0', '6b1de3563be561ccd56f1109127e5716', 'ba425ed7eed81fc616b8557d2d6bfaad', '<a href=\'space.php?do=activity\'>admin 发布了新活动“1111”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('25', '1', 'activity', '1', 'admin', '1391948102', '0', 'bf802a53c6f50ac03d68056735963449', '276aeb975afccae29ecb636c292d5b82', '<a href=\'space.php?do=activity\'>admin 发布了新活动“1”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('26', '1', 'activity', '1', 'admin', '1391948125', '0', 'e55d06c15b13bbc6848a760a2fb9e83e', '92ecbf9887c51a337b3778d1eba5c406', '<a href=\'space.php?do=activity\'>admin 发布了新活动“2”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
-INSERT INTO `uchome_feed` VALUES ('27', '1', 'activity', '1', 'admin', '1391948143', '0', '46f57563d80142db505f17fd7e5f51a2', '588ba82e2d3d27132dade32ccd441fca', '<a href=\'space.php?do=activity\'>admin 发布了新活动“3”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
 INSERT INTO `uchome_feed` VALUES ('28', '1', 'activity', '1', 'admin', '1392101751', '0', 'f4020f21161d9afa3b716a24659aa559', 'c41b6f9bec4fe2f9dcf8eeee14c3a8f7', '<a href=\'space.php?do=activity\'>admin 发布了新活动“333”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
 INSERT INTO `uchome_feed` VALUES ('29', '1', 'activity', '1', 'admin', '1392103215', '0', '75228b71fe0bfa6e0fd78460becbc7ab', '6b1e84c490c9fe7df4ae039a81e4d45b', '<a href=\'space.php?do=activity\'>admin 发布了新活动“aaaaa”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
 INSERT INTO `uchome_feed` VALUES ('30', '1', 'activity', '1', 'admin', '1392117376', '0', '5f0641c673c8d85922d1a07e0ce08ac4', 'fc809b5b052b526f1b59b5c9a00220bb', '<a href=\'space.php?do=activity\'>admin 发布了新活动“657567”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
 INSERT INTO `uchome_feed` VALUES ('31', '1', 'activity', '1', 'admin', '1392117610', '0', 'ac560228d68406ab00c1d279cefeb05b', 'e79766602acd70a77d7e49a9b9abcc5e', '<a href=\'space.php?do=activity\'>admin 发布了新活动“567567”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
 INSERT INTO `uchome_feed` VALUES ('32', '1', 'activity', '1', 'admin', '1392119846', '0', '47caacb36220618ad353c77da95c6dad', '1be551afd659cf31779473c01c0deb18', '<a href=\'space.php?do=activity\'>admin 发布了新活动“555”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('33', '1', 'activity', '1', 'admin', '1392188021', '0', '15461bb08b6c3fc1e98c51d61c8a1836', 'd6af5a68f93bc08aae621d340af71c65', '<a href=\'space.php?do=activity\'>admin 发布了新活动“wqe”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('34', '1', 'activity', '1', 'admin', '1392190464', '0', '2cbdee7f16435ba06807cfa84a0e50c2', '3130a0c5152ceefe64918fd870367df3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“567657”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('35', '1', 'activity', '1', 'admin', '1392190502', '0', '78c598d39f26a18e9ff4b1210bb4bb21', 'd563e6dbefb176550a64e242e49e6364', '<a href=\'space.php?do=activity\'>admin 发布了新活动“765756”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('36', '1', 'activity', '1', 'admin', '1392190773', '0', 'c31bbe4a274bcd8aac6f3ef07aad8096', '29abd379b0db7c451f6354f2e08dfc48', '<a href=\'space.php?do=activity\'>admin 发布了新活动“周末活动”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('37', '1', 'activity', '1', 'admin', '1392279480', '0', '36e2984fa7add7b7c3620f503100ec83', '2ec6889fde3ec5df546ba2cd4aa5f7f4', '<a href=\'space.php?do=activity\'>admin 发布了新活动“不错哦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('38', '1', 'activity', '1', 'admin', '1392293153', '0', '41a9931e7b97070c3c1350b932a102d5', '6e26d478c4a0a8a70c93786023c5a8e3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“啦啦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('39', '1', 'activity', '1', 'admin', '1392479262', '0', '41a9931e7b97070c3c1350b932a102d5', '6e26d478c4a0a8a70c93786023c5a8e3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“啦啦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('40', '1', 'activity', '1', 'admin', '1392479346', '0', '2cbdee7f16435ba06807cfa84a0e50c2', '3130a0c5152ceefe64918fd870367df3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“567657”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('41', '1', 'activity', '1', 'admin', '1392479351', '0', '36e2984fa7add7b7c3620f503100ec83', '2ec6889fde3ec5df546ba2cd4aa5f7f4', '<a href=\'space.php?do=activity\'>admin 发布了新活动“不错哦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('42', '1', 'activity', '1', 'admin', '1392479368', '0', '41a9931e7b97070c3c1350b932a102d5', '6e26d478c4a0a8a70c93786023c5a8e3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“啦啦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('43', '1', 'activity', '1', 'admin', '1392480023', '0', '36e2984fa7add7b7c3620f503100ec83', '2ec6889fde3ec5df546ba2cd4aa5f7f4', '<a href=\'space.php?do=activity\'>admin 发布了新活动“不错哦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('44', '1', 'activity', '1', 'admin', '1392480025', '0', '36e2984fa7add7b7c3620f503100ec83', '2ec6889fde3ec5df546ba2cd4aa5f7f4', '<a href=\'space.php?do=activity\'>admin 发布了新活动“不错哦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('45', '1', 'activity', '1', 'admin', '1392480025', '0', '36e2984fa7add7b7c3620f503100ec83', '2ec6889fde3ec5df546ba2cd4aa5f7f4', '<a href=\'space.php?do=activity\'>admin 发布了新活动“不错哦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('46', '1', 'activity', '1', 'admin', '1392480026', '0', '36e2984fa7add7b7c3620f503100ec83', '2ec6889fde3ec5df546ba2cd4aa5f7f4', '<a href=\'space.php?do=activity\'>admin 发布了新活动“不错哦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('47', '1', 'activity', '1', 'admin', '1392480358', '0', '41a9931e7b97070c3c1350b932a102d5', '6e26d478c4a0a8a70c93786023c5a8e3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“啦啦”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('48', '1', 'activity', '1', 'admin', '1392480361', '0', '2cbdee7f16435ba06807cfa84a0e50c2', '3130a0c5152ceefe64918fd870367df3', '<a href=\'space.php?do=activity\'>admin 发布了新活动“567657”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('49', '1', 'activity', '1', 'admin', '1392480365', '0', '78c598d39f26a18e9ff4b1210bb4bb21', 'd563e6dbefb176550a64e242e49e6364', '<a href=\'space.php?do=activity\'>admin 发布了新活动“765756”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('50', '1', 'activity', '1', 'admin', '1392561297', '0', '1d37ae070e83eeee4d1b72a93710a1f5', '9135b77d7475e8391b84e834e4ae44aa', '<a href=\'space.php?do=activity\'>admin 发布了新活动“滚滚滚滚滚”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('51', '1', 'activity', '1', 'admin', '1392563579', '0', '4a85fbd7947c396b1b278b5623470d76', '752f3bdd3f997a9d59f69a7018fe630d', '<a href=\'space.php?do=activity\'>admin 发布了新活动“6765”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('52', '1', 'activity', '1', 'admin', '1392564501', '0', 'a4ed419f3ebfc7b5d3a23685994f619a', '6b529ec1d19bb6ed63699fb397f1bba2', '<a href=\'space.php?do=activity\'>admin 发布了新活动“453”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('53', '1', 'profile', '1', 'admin', '1392566670', '0', 'aea59f1ed4716150aef95653a6423143', '779796411c481c8a61b5ff3cc7b1862a', '{actor} 更新了自己的工作信息', 'a:0:{}', '', 'a:0:{}', '', '', '', '', '', '', '', '', '', '', '0', '', '0');
+INSERT INTO `uchome_feed` VALUES ('54', '1', 'activity', '1', 'admin', '1392568616', '0', 'b655fd371d99a6252d359860a6c6301d', '13e45d0116cba2a65e01cc0866fcd2c0', '<a href=\'space.php?do=activity\'>admin 发布了新活动“14年的王道全书怎么回事了？”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('55', '1', 'activity', '8888', '', '1392569779', '0', '9ca0d0b1f3a5f992f9fe7e4ae9f42035', '299dd4f654900cde5694dbdab2e36c4a', '<a href=\'space.php?do=activity\'> 发布了新活动“哈哈哈打发打发打发”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('56', '1', 'activity', '1', 'admin', '1392569815', '0', '7471ccdcad01f0b067494f9209aed5f4', '1be053368c76fc13cd3a802f0a1af925', '<a href=\'space.php?do=activity\'>admin 发布了新活动“9999”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
+INSERT INTO `uchome_feed` VALUES ('57', '1', 'activity', '1', 'admin', '1392569918', '0', '2e18708ba120c1950fb6877defcec987', '9dec003046410ae3be816c67d45ff5c7', '<a href=\'space.php?do=activity\'>admin 发布了新活动“6666666666666”</a>', 'N;', '', 'N;', '', '', '', '', '', '', '', '', '', '', '0', 'activity', '0');
 
 -- ----------------------------
 -- Table structure for `uchome_friend`
@@ -7481,7 +7494,7 @@ CREATE TABLE `uchome_pic` (
   PRIMARY KEY  (`picid`),
   KEY `albumid` (`albumid`,`dateline`),
   KEY `topicid` (`topicid`,`dateline`)
-) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchome_pic
@@ -7547,6 +7560,23 @@ INSERT INTO `uchome_pic` VALUES ('58', '0', '0', '0', '', '1392117599', '127.0.0
 INSERT INTO `uchome_pic` VALUES ('59', '0', '0', '0', '', '1392118724', '127.0.0.1', 'Koala.jpg', '', 'application/octet-st', '780831', '201402/11/0_1392118724GwLE.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `uchome_pic` VALUES ('60', '0', '0', '0', '', '1392118728', '127.0.0.1', 'Penguins.jpg', '', 'application/octet-st', '777835', '201402/11/0_1392118728RVP5.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `uchome_pic` VALUES ('61', '0', '0', '0', '', '1392119842', '127.0.0.1', 'Chrysanthemum.jpg', '', 'application/octet-st', '879394', '201402/11/0_13921198426mFR.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('62', '0', '0', '0', '', '1392188020', '127.0.0.1', 'Koala.jpg', '', 'application/octet-st', '780831', '201402/12/0_1392188020Q432.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('63', '0', '0', '0', '', '1392189445', '127.0.0.1', 'Desert.jpg', '', 'application/octet-st', '845941', '201402/12/0_1392189445h4cY.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('64', '0', '0', '0', '', '1392190463', '127.0.0.1', 'Koala.jpg', '', 'application/octet-st', '780831', '201402/12/0_1392190463o522.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('65', '0', '0', '0', '', '1392190501', '127.0.0.1', 'Jellyfish.jpg', '', 'application/octet-st', '775702', '201402/12/0_1392190501sHgS.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('66', '0', '0', '0', '', '1392190772', '127.0.0.1', 'Tulips.jpg', '', 'application/octet-st', '620888', '201402/12/0_1392190772VjtL.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('67', '0', '0', '0', '', '1392279479', '127.0.0.1', 'Koala.jpg', '', 'application/octet-st', '780831', '201402/13/0_13922794793yxI.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('68', '0', '0', '0', '', '1392293143', '127.0.0.1', 'Lighthouse.jpg', '', 'application/octet-st', '561276', '201402/13/0_13922931434cQ5.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('69', '0', '0', '0', '', '1392561000', '127.0.0.1', 'Chrysanthemum.jpg', '', 'application/octet-st', '879394', '201402/16/0_1392561000V17N.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('70', '0', '0', '0', '', '1392561079', '127.0.0.1', 'Tulips.jpg', '', 'application/octet-st', '620888', '201402/16/0_1392561079k12e.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('71', '0', '0', '0', '', '1392561295', '127.0.0.1', 'Lighthouse.jpg', '', 'application/octet-st', '561276', '201402/16/0_1392561295yY13.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('72', '0', '0', '0', '', '1392561361', '127.0.0.1', 'Penguins.jpg', '', 'application/octet-st', '777835', '201402/16/0_1392561361nq46.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('73', '0', '0', '0', '', '1392561668', '127.0.0.1', 'Penguins.jpg', '', 'application/octet-st', '777835', '201402/16/0_1392561668A55k.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('74', '0', '0', '0', '', '1392562981', '127.0.0.1', 'Lighthouse.jpg', '', 'application/octet-st', '561276', '201402/16/0_1392562981wMvN.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('75', '0', '0', '0', '', '1392563045', '127.0.0.1', 'Lighthouse.jpg', '', 'application/octet-st', '561276', '201402/16/0_1392563045eulH.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('76', '0', '0', '0', '', '1392563173', '127.0.0.1', 'Lighthouse.jpg', '', 'application/octet-st', '561276', '201402/16/0_1392563173tPUt.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('77', '0', '0', '0', '', '1392563675', '127.0.0.1', 'Hydrangeas.jpg', '', 'application/octet-st', '595284', '201402/16/0_1392563675x2z1.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `uchome_pic` VALUES ('78', '0', '0', '0', '', '1392564496', '127.0.0.1', 'Desert.jpg', '', 'application/octet-st', '845941', '201402/16/0_13925644963Khn.jpg', '1', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `uchome_picfield`
@@ -7786,22 +7816,33 @@ CREATE TABLE `uchome_second` (
   `sed_hide` tinyint(8) NOT NULL default '1' COMMENT '0为隐藏，1为显示',
   `sed_classification` char(255) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchome_second
 -- ----------------------------
-INSERT INTO `uchome_second` VALUES ('11', '1', '任溶溶', '1393611900', '13333', '1391864832', '0', '6666666666666666', '0', '0', '0', '0', '40', '0', '');
-INSERT INTO `uchome_second` VALUES ('12', '1', '单车11111', '1393611900', '11111333', '1392030289', '0', '发生大幅度是否11111', '0', '0', '0', '0', '0', '0', '');
-INSERT INTO `uchome_second` VALUES ('13', '1', '汽车', '1393611900', '3333', '1391864832', '0', '就斤斤计较', '0', '0', '0', '0', '42', '1', '');
-INSERT INTO `uchome_second` VALUES ('10', '1', '我问佛', '1393611900', '4333', '1391864832', '0', '方芳芳', '0', '0', '0', '0', '40', '1', '');
-INSERT INTO `uchome_second` VALUES ('1', '1', '错错错', '1393611900', '5333', '1391864832', '0', '广泛大概', '0', '0', '0', '0', '42', '1', '');
-INSERT INTO `uchome_second` VALUES ('14', '1', '嗖嗖嗖', '1392967800', '63333', '1392019385', '0', '防盗防复发', '0', '0', '0', '0', '0', '0', '');
-INSERT INTO `uchome_second` VALUES ('15', '1', '凤飞飞', '1392105600', '3333', '1392019478', '0', '33333', '0', '0', '0', '0', '0', '0', '');
-INSERT INTO `uchome_second` VALUES ('16', '1', 'QQ', '1392202800', '6666', '1392030232', '0', '6666', '0', '0', '0', '0', '0', '0', '');
-INSERT INTO `uchome_second` VALUES ('17', '1', '333', '1392191700', '3333', '1392119655', '0', '3333', '0', '0', '0', '0', '0', '1', '');
-INSERT INTO `uchome_second` VALUES ('18', '1', 'gg', '1392376200', '44', '1392117376', '0', 'tttt', '0', '0', '0', '0', '0', '0', '');
-INSERT INTO `uchome_second` VALUES ('19', '1', 'tt', '1393410600', '66', '1392117610', '0', '888888', '0', '0', '0', '0', '58', '0', '');
+INSERT INTO `uchome_second` VALUES ('11', '12', '任溶溶', '1393611900', '13333', '1391864832', '0', '6666666666666666', '0', '0', '0', '0', '40', '1', '');
+INSERT INTO `uchome_second` VALUES ('12', '34', '单车11111', '1393611900', '11111333', '1392030289', '0', '发生大幅度是否11111', '0', '0', '0', '0', '0', '1', '');
+INSERT INTO `uchome_second` VALUES ('13', '12', '汽车', '1393611900', '3333', '1391864832', '0', '就斤斤计较', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('10', '12', '我问佛', '1393611900', '4333', '1391864832', '0', '方芳芳', '0', '0', '0', '0', '40', '1', '');
+INSERT INTO `uchome_second` VALUES ('1', '12', '错错错', '1393611900', '5333', '1391864832', '0', '广泛大概', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('14', '43', '嗖嗖嗖', '1392967800', '63333', '1392019385', '0', '防盗防复发', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('15', '1', '凤飞飞', '1392105600', '3333', '1392019478', '0', '33333', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('16', '3443', 'QQ', '1392202800', '6666', '1392030232', '0', '6666', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('20', '1', '434334434343444', '1393572600', '3333', '1392289386', '0', 'ewrrewrewrew', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('17', '1', '333', '1392191700', '3333', '1392119655', '0', '3333', '0', '0', '0', '0', '42', '1', '');
+INSERT INTO `uchome_second` VALUES ('18', '1', 'gg', '1392376200', '44', '1392117376', '0', 'tttt', '0', '0', '0', '0', '58', '1', '');
+INSERT INTO `uchome_second` VALUES ('19', '21', 'tt', '1393410600', '66', '1392117610', '0', '888888', '0', '0', '0', '0', '58', '1', '');
+INSERT INTO `uchome_second` VALUES ('21', '21', '353', '1393054200', '433', '1392190502', '0', '454343534454', '0', '0', '0', '0', '65', '1', '');
+INSERT INTO `uchome_second` VALUES ('22', '12', 'ytytyty', '1393054500', '454545', '1392190773', '0', '年龄：青年、中年、老年。搭配应各有侧重。\n职业：金融、媒体、IT。风格要各有不同。\n体型：牙签、劈柴、水桶。极其影响着装效果。\n性向：同性、异性、双性。由内而外的气质简直能让人', '0', '0', '0', '0', '66', '1', '');
+INSERT INTO `uchome_second` VALUES ('23', '1', 'gdfg', '1392289600', '4553', '1392279480', '0', 'regerrrg', '0', '0', '0', '0', '67', '1', '');
+INSERT INTO `uchome_second` VALUES ('24', '1', 'mmmmmhgghgh', '1392555600', '999', '1392475817', '0', '9999999ggh', '0', '0', '0', '0', '0', '1', '');
+INSERT INTO `uchome_second` VALUES ('25', '1', '发发发发发发发', '1393601400', '555', '1392563579', '0', '吐吐吐吐吐吐吐吐吐吐吐吐吐', '0', '0', '0', '0', '0', '1', '');
+INSERT INTO `uchome_second` VALUES ('26', '1', '00000000000000000000000000000000', '1393514700', '5545', '1392564501', '0', '5455554', '0', '0', '0', '0', '78', '1', '');
+INSERT INTO `uchome_second` VALUES ('27', '1', 'tttt', '1393482900', '8888', '1392568616', '0', '88888888888888888888888', '0', '0', '0', '0', '0', '1', '');
+INSERT INTO `uchome_second` VALUES ('28', '1', '刚刚', '1393555800', '777', '1392569779', '0', '77777', '0', '0', '0', '0', '0', '1', '');
+INSERT INTO `uchome_second` VALUES ('29', '1', '过分过分', '1393483800', '878', '1392569815', '0', '788787', '0', '0', '0', '0', '0', '1', '');
+INSERT INTO `uchome_second` VALUES ('30', '1', '奋斗奋斗', '1392965400', '6556', '1392569918', '0', '656565', '0', '0', '0', '0', '0', '1', '');
 
 -- ----------------------------
 -- Table structure for `uchome_second_classification`
@@ -7822,6 +7863,25 @@ INSERT INTO `uchome_second_classification` VALUES ('3', '文体用品');
 INSERT INTO `uchome_second_classification` VALUES ('4', '其他');
 
 -- ----------------------------
+-- Table structure for `uchome_second_shoucang`
+-- ----------------------------
+DROP TABLE IF EXISTS `uchome_second_shoucang`;
+CREATE TABLE `uchome_second_shoucang` (
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `uid` mediumint(8) NOT NULL,
+  `sed_id` mediumint(8) NOT NULL,
+  `sed_time` int(10) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of uchome_second_shoucang
+-- ----------------------------
+INSERT INTO `uchome_second_shoucang` VALUES ('9', '1', '24', '1392480358');
+INSERT INTO `uchome_second_shoucang` VALUES ('10', '1', '20', '1392480361');
+INSERT INTO `uchome_second_shoucang` VALUES ('11', '1', '21', '1392480365');
+
+-- ----------------------------
 -- Table structure for `uchome_session`
 -- ----------------------------
 DROP TABLE IF EXISTS `uchome_session`;
@@ -7840,7 +7900,7 @@ CREATE TABLE `uchome_session` (
 -- ----------------------------
 -- Records of uchome_session
 -- ----------------------------
-INSERT INTO `uchome_session` VALUES ('1', 'admin', '3f0080259e630a92fa392a893828f9e8', '1392124493', '127000000', '0');
+INSERT INTO `uchome_session` VALUES ('1', 'admin', '3f0080259e630a92fa392a893828f9e8', '1392569918', '127000000', '0');
 
 -- ----------------------------
 -- Table structure for `uchome_share`
@@ -7944,7 +8004,7 @@ CREATE TABLE `uchome_space` (
 -- ----------------------------
 -- Records of uchome_space
 -- ----------------------------
-INSERT INTO `uchome_space` VALUES ('1', '1', '265', '255', 'admin', '', '0', '0', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1387876401', '1391761064', '0', '0', '1392124482', '0', '22814324', '0', '0', '1', '0', '0', '127.0.0.1', '127000000', '0');
+INSERT INTO `uchome_space` VALUES ('1', '1', '340', '330', 'admin', '', '0', '0', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1387876401', '1391761064', '0', '0', '1392566715', '0', '22814324', '0', '0', '1', '0', '0', '127.0.0.1', '127000000', '0');
 
 -- ----------------------------
 -- Table structure for `uchome_spacefield`
