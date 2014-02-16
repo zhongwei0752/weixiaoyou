@@ -68,10 +68,11 @@
         <!--{if $_GET['do']=='activity'&&$_GET['op']=='me'}--><li class="active"><!--{else}--><li><!--{/if}--><a href="space.php?do=activity&op=me">我的活动</a></li>
       </ul>
   </li>
-    <!--{if $_GET['do']=='second'}--><li class="submenu open"><!--{else}--><li class="submenu"><!--{/if}--> <a href="second.php?do=second"><i class="icon icon-inbox"></i> <span>二手市场</span></a> 
+    <!--{if $_GET['do']=='second'}--><li class="submenu open"><!--{else}--><li class="submenu"><!--{/if}--> <a href="space.php?do=second"><i class="icon icon-inbox"></i> <span>二手市场</span></a> 
       <ul>
-         <!--{if $_GET['do']=='second'&&$_GET['op']!='me'}--><li class="active"><!--{else}--><li><!--{/if}--><a href="second.php?do=second">正在进行中的交易</a></li>
-        <!--{if $_GET['do']=='second'&&$_GET['op']=='me'}--><li class="active"><!--{else}--><li><!--{/if}--><a href="second.php?do=second&op=me">我的交易</a></li>
+         <!--{if $_GET['do']=='second'&&$_GET['op']!='me'}--><li class="active"><!--{else}--><li><!--{/if}--><a href="space.php?do=second">正在进行中的交易</a></li>
+        <!--{if $_GET['do']=='second'&&$_GET['op']=='me'}--><li class="active"><!--{else}--><li><!--{/if}--><a href="space.php?do=second&op=me">我的交易</a></li>
+      <li><a href="second.php?do=second&op=me&to=shoucang">我的收藏</a></li>
       </ul>
   </li>
     <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
