@@ -112,7 +112,7 @@
               <!--{/if}-->
               <!-- <a href="#myModal$value[id]" id="amyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">报名</button></a> -->
               <!--{if $value[baoming]}-->     
-              <a  style="color:#fff;"> <button id="enlistmyModal$value[id]"  class="btn btn-warning btn-mini">已报名</button></a>
+              <a  style="color:#fff;"> <button id="enlistmyModal$value[id]"  class="btn btn-warning btn-mini">取消报名</button></a>
                <!--{else}-->
                <a  style="color:#fff;"> <button id="enlistmyModal$value[id]"  class="btn btn-warning btn-mini">报名</button></a>
                 <!--{/if}-->
@@ -263,7 +263,7 @@
                           text: '活动报名成功',
                           sticky: false
                         }); 
-                        $("#enlistmyModal$value[id]").html("已报名");
+                        $("#enlistmyModal$value[id]").html("取消报名");
                        //  alert('活动报名成功');//
                       }else{
                         alert('活动报名没有成功');//
@@ -271,12 +271,25 @@
               }
       }); 
     }else{
-      $.gritter.add({
-          title:  '',
-          text: '您已经成功报名过了！',
-          sticky: false
-          }); 
-    };
+       $.ajax({//取消报名
+           type:"POST",
+           url:"space.php?do=deal",
+           data:"id=$value[id]&enlist=0",
+           async: true,                    
+             success: function (data) {
+                      if(data=='1')
+                      {
+                        $.gritter.add({
+                          title:  '',
+                          text: '您已经取消了该活动',
+                          sticky: false
+                        }); 
+                        $("#enlistmyModal$value[id]").html("报名");
+                       //  alert('活动报名成功');//
+                      }
+              }
+      }); 
+     }
     });
 
 
@@ -298,6 +311,7 @@
                          $("#activity$value[id]").hide();
                       }else{
                         alert('删除没成功');//
+                        //alert(data);//
                       }
               }
        });
@@ -385,7 +399,8 @@ $(function(){
     newYear = false;
   }else{
     $("#time$value[id]").parent().find('.countdown').hide();
-    $("#time$value[id]").parent().parent().find('#baoming').hide();
+    $("#time$value[id]").parent().parent().find('#amodifyModal$value[id]').hide();
+    $("#time$value[id]").parent().parent().find('#enlistmyModal$value[id]').hide();
     $("#time$value[id]").parent().find('#notetime').html("已过期");
   }
 
