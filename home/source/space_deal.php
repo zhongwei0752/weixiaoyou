@@ -54,13 +54,15 @@ if ($modifyhuodong) {
 		echo "1";
 	}
 }
-//删除
+//删除 ，有个问题，用户删除了已经很多人报名了的活动，该如何处理
 $delete=$_POST['delete'];
 if ($delete) {
 	$id=$_POST['id'];
 	$data=array('hide'=>0);
     updatetable('activity',$data,array('id'=>$id));
-    echo "1";
+    $_SGLOBAL['db']->query("DELETE FROM ".tname('activityenlist')." where  activityid='".$id."'");
+    //删除报名表中的数据!!
+    //echo '1';
 }
 //报名
 $enlist=$_POST['enlist'];
@@ -68,6 +70,16 @@ if ($enlist) {
 	$uid = $_SGLOBAL['supe_uid'];
 	$activityid=$_POST['id'];
 	$id=inserttable("activityenlist",array('activityid'=>$activityid,'uid'=>$uid),1);
+    //include_once(S_ROOT.'./source/function_feed.php');
+    //feed_publish($id, 'activityid', $olds?0:1);
+	echo "1";
+}
+//取消报名
+if ($enlist==0) {
+	$uid = $_SGLOBAL['supe_uid'];
+	$activityid=$_POST['id'];
+	$_SGLOBAL['db']->query("DELETE FROM ".tname('activityenlist')." where uid='".$uid."' and activityid='".$activityid."'");
+	//$id=inserttable("activityenlist",array('activityid'=>$activityid,'uid'=>$uid),1);
     //include_once(S_ROOT.'./source/function_feed.php');
     //feed_publish($id, 'activityid', $olds?0:1);
 	echo "1";
