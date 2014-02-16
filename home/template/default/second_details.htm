@@ -88,24 +88,22 @@
         <div class="widget-content nopadding collapse in" id="$value[id]"><!-- 加in默认打开 -->
           <ul class="recent-posts">
             <li>
-              <!--{if $value[thumbpic]}-->
-              <div class="user-thumb" style="width:100px;height:100%;text-align:center;"> <img width="100" height="100%" alt="User" src="$value[thumbpic]"><a href="#bigModal$value[id]"  data-toggle="modal">(放大图片)</a></div>
-              <div  class="article-post" style="padding-left: 80px;"><!-- <span  class="user-info">$value[sed_message]</span> -->
+              <!--{if $value[pic]}-->
+              <div class="modal-body" style='text-align:center;max-height: 600px;'>
+               <img src="$value[pic]">
+              </div>
+              <div  class="article-post" style="padding-left: 15px;">
               <!--{else}-->
-              <!-- <div class="user-thumb"> <img width="40" height="40" alt="User" src="./template/default/feed/img/demo/av4.jpg"> </div> -->
               <div class="article-post"> 
-               
-               
               <!--{/if}-->
               <p>价格：<span id="price$value[id]" class="user-info">$value[sed_price]</span>元</p>
-             <p>截止时间：<a href="#"><!--{date('m-d H:i',$value[sed_time])}--></a> </p>
-                 <p><span id="message$value[id]" class="user-info">$value[sed_message] </span></p>
-                 <h6><a href="second.php?do=details&secondid=$value[id]" target="_blank">详细页面</a> </h6>
+                <p>截止时间：<a href="#"><!--{date('m-d H:i',$value[sed_time])}--></a> </p>
+                 <p>备注：<span  class="user-info">$value[sed_message]</span></p>
                 <!--{if $value[thumbpic]}-->
                 <br/>
                 <!--{/if}-->
               </div>
-             <a id="shoucang$value[id]" href=""> <i class="icon-heart" ></i>收藏</a>
+              
             <li id="baoming">
               <!--{if $value[uid]==$_SGLOBAL[supe_uid]}-->
               <button id="delete$value[id]" class="btn btn-warning btn-mini">删除</button>
@@ -235,28 +233,6 @@
 <!--End-breadcrumbs-->
 <script type="text/javascript">
  $(document).ready(function () {
-  
-  $("#shoucang$value[id]").click(function(){
-           $.ajax({
-            type:"POST",
-            url:"second.php?do=deal",
-            data:"id=$value[id]&shoucang=1",
-            async: true,                    
-             success: function (data) {
-                      if(data=='1')
-                      {
-                        $.gritter.add({
-                          title:  '',
-                          text: '信息收藏成功',
-                          sticky: false
-                        }); 
-                         $("#second$value[id]").hide();
-                      }else{
-                        alert('亲，麻烦您再试一次！');//
-                      }
-              }
-       });
-  });
 
 //删除功能
     $("#delete$value[id]").click(function(){
@@ -270,7 +246,7 @@
                       {
                         $.gritter.add({
                           title:  '',
-                          text: '信息删除成功',
+                          text: '活动删除成功',
                           sticky: false
                         }); 
                          $("#second$value[id]").hide();
@@ -298,7 +274,7 @@
                         $(".modal-backdrop").hide();
                         $.gritter.add({
                           title:  '',
-                          text: '信息修改成功',
+                          text: '活动修改成功',
                           sticky: false
                         }); 
                         $('#subject$value[id]').html($('#resubject$value[id]').val());
