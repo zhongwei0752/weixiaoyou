@@ -23,8 +23,8 @@
   <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb"> <a href="cp.php?ac=sedfabu"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> 二手信息发布cp版 </a> </li>
-        <li class="bg_lg span3"> <a href="charts.html"> <i class="icon-signal"></i> Charts</a> </li>
+        <li class="bg_lb"> <a href="cp.php?ac=sedfabu&op=fabu"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> 二手信息发布cp版 </a> </li>
+        <li class="bg_lg span3"> <a href="#sedmyModal" data-toggle="modal"> <i class="icon-signal"></i>二手信息发布</a> </li>
         <li class="bg_ly"> <a href="widgets.html"> <i class="icon-inbox"></i><span class="label label-success">101</span> Widgets </a> </li>
         <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>
         <li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>
@@ -98,7 +98,6 @@
               </div> -->            
           </div>  
 </div>
-
 <!-- 楼下是二手信息发布 -->
 <div id="secondmyModal" class="modal hide" style="width:1000px;left:40%;">
    <div class="widget-content tab-content" style="padding:0px;height:500px;">
@@ -140,6 +139,39 @@
    </div>
 </div>
 <!-- 二手市场发布终止 -->
+
+<!-- 楼下是承诺书 -->
+<div id="sedmyModal" class="modal hide" style="width:500px;">
+   <div class="widget-content tab-content" style="padding:0px;height:400px;">
+     <div class="modal-header">
+          <button data-dismiss="modal" class="close" type="button">x</button>
+          <h3 id="subject" style="text-align:center;">承诺书</h3>
+     </div>
+     <div style="width:100%;height:250px;">
+      <p style="margin-left:10px;">
+          尊敬的用户：</p>
+         <p id="promisecontent" style="margin-left:36px;"> 为维护买卖双方及网站的有序进行，您必须承诺所售的物品合法，且要诚信经营！若有问题，您要负责任！！！！
+
+      </p>
+              <div id="renzheng" class="modal-body" style="text-align:center;float:center;padding:0px;margin-top:10px;display:none;">
+             <p>真实名字：<input style="margin-left:6px;" type="text" name="realname" id="realname" >
+            
+             <p>手机号码：<input style="margin-left:6px;" type="text" name="telephone" id="telephone" >             
+             </p>
+        </div>
+     </div>
+     <div style="width:100%;text-align:center;">
+                <label id="warning" style="color:red">&nbsp&nbsp</label>
+               <button type="submit" id="sed_promise" class="btn btn-success">我已阅读以上承诺书，立即签署</button>
+               <button data-dismiss="modal" class="btn btn-success" id="cancel">暂不签署</button>
+               
+     </div>
+   </div>
+</div>
+<!-- 承诺书终止 -->
+
+
+
 <script type="text/javascript">  
       window.onload=function(){  
           $('.selectpicker').selectpicker();  
@@ -569,6 +601,47 @@
 
     });
   $(document).ready(function () {
+   
+   $("#sed_promise").click(function(){//二手信息发布
+   if($("#sed_promise").html()!="确认"){
+    $.ajax({
+      type:"POST",
+      url:"cp.php?ac=sedfabu",
+      data:"promise=1&fabu=1",
+      async:true,
+        success: function (data) {
+                      if(data=='-1')
+                      {
+                        $("#renzheng").show();
+                        $("#subject").html("个人信息认证");
+                        $("#promisecontent").html("为确保信息的真实性，第一次发布二手商品信息前要进行认证！谢谢您！！");
+                        $("#sed_promise").html("确认");
+                        $("#cancel").html("暂时不认证");
+                      }else{
+                          window.location.href='./cp.php?ac=sedfabu';
+                      }
+                    }
+    })
+  }else{
+   $.ajax({
+      type:"POST",
+      url:"cp.php?ac=sedfabu",
+      data:"name="+$('#realname').val()+"&telephone="+$('#telephone').val()+"&renzheng=1&fabu=1",
+      async:true,
+        success: function (data) {
+                      if(data=='-1')
+                      {
+
+                         $("#warning").html("请把信息填完整！");
+                      }else{
+                         $("#warning").html("个人信息确认成功，现在为您跳转到信息发布页，请稍等...");
+                         window.setTimeout("window.location='./cp.php?ac=sedfabu'",1500); 
+                      }
+                    }
+    })
+  }
+   });
+
     $("#sed_jiaoyi").click(function(){//二手洗洗脑发布
      // alert("123");
       $.ajax({
