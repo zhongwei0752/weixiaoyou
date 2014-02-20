@@ -107,12 +107,12 @@
               
             <li id="baoming">
               <!--{if $value[uid]==$_SGLOBAL[supe_uid]}-->
-              <button id="delete$value[id]" class="btn btn-warning btn-mini">删除</button>
-              <a href="#modifymyModal$value[id]" id="amodifyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">修改</button></a>
+              <button id="delete$value[id]" class="btn btn-info btn-mini">删除</button>
+              <a href="#modifymyModal$value[id]" id="amodifyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-success btn-mini">修改</button></a>
               <!--{/if}-->
               <!-- <a href="#myModal$value[id]" id="amyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">报名</button></a> -->
               <!--{if $value[baoming]}-->     
-              <a  style="color:#fff;"> <button id="enlistmyModal$value[id]"  class="btn btn-warning btn-mini">取消报名</button></a>
+              <a  style="color:#fff;"> <button id="enlistmyModal$value[id]"  class="btn btn-danger btn-mini">取消报名</button></a>
                <!--{else}-->
                <a  style="color:#fff;"> <button id="enlistmyModal$value[id]"  class="btn btn-warning btn-mini">报名</button></a>
                 <!--{/if}-->
@@ -161,7 +161,7 @@
         </div>            
         <div style="width:100%;text-align:center;">
             <button type="submit" id="modifyhuodong$value[id]" class="btn btn-success">发布</button>
-            <button type="reset" class="btn btn-success">重置</button>
+            <button data-dismiss="modal" class="btn btn-success" id="cancel">取消</button>
         </div>
       </div>            
   </div>
@@ -248,7 +248,6 @@
  $(document).ready(function () {
 //报名功能
     $("#enlistmyModal$value[id]").click(function(){
-    // alert("oooo");
     if ($("#enlistmyModal$value[id]").html()=="报名") {
        $.ajax({
            type:"POST",
@@ -263,8 +262,8 @@
                           text: '活动报名成功',
                           sticky: false
                         }); 
-                        $("#enlistmyModal$value[id]").html("取消报名");
-                       //  alert('活动报名成功');//
+                        $("#enlistmyModal$value[id]").html("取消报名");//info
+                         $("#enlistmyModal$value[id]").removeClass().addClass("btn btn-danger btn-mini");
                       }else{
                         alert('活动报名没有成功');//
                       }
@@ -285,7 +284,7 @@
                           sticky: false
                         }); 
                         $("#enlistmyModal$value[id]").html("报名");
-                       //  alert('活动报名成功');//
+                         $("#enlistmyModal$value[id]").removeClass().addClass("btn btn-warning btn-mini");
                       }
               }
       }); 
