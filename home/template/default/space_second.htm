@@ -89,8 +89,8 @@
           <ul class="recent-posts">
             <li>
               <!--{if $value[thumbpic]}-->
-              <div class="user-thumb" style="width:100px;height:100%;text-align:center;"> <img width="100" height="100%" alt="User" src="$value[thumbpic]"><a href="#bigModal$value[id]"  data-toggle="modal">(放大图片)</a></div>
-              <div  class="article-post" style="padding-left: 80px;"><!-- <span  class="user-info">$value[sed_message]</span> -->
+              <div class="user-thumb" style="width:100px;height:100%;text-align:center;float:right;margin-top:10px;"> <img width="100" height="100%" alt="User" src="$value[thumbpic]"><a href="#bigModal$value[id]" style="float:right" data-toggle="modal">(放大图片)</a></div>
+              <div  class="article-post" ><!-- <span  class="user-info">$value[sed_message]</span> -->
               <!--{else}-->
               <!-- <div class="user-thumb"> <img width="40" height="40" alt="User" src="./template/default/feed/img/demo/av4.jpg"> </div> -->
               <div class="article-post"> 
@@ -105,14 +105,18 @@
                 <br/>
                 <!--{/if}-->
               </div>
-             <a id="shoucang$value[id]" href=""> <i class="icon-heart" ></i>收藏</a>
+            
             <li id="baoming">
               <!--{if $value[uid]==$_SGLOBAL[supe_uid]}-->
-              <button id="delete$value[id]" class="btn btn-warning btn-mini">删除</button>
-              <a href="#modifymyModal$value[id]" id="amodifyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">修改</button></a>
+              <button id="delete$value[id]" class="btn btn-info  btn-mini">删除</button>
+              <a href="#modifymyModal$value[id]" id="amodifyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-success  btn-mini">修改</button></a>
               <!--{/if}-->
-              <a href="#myModal$value[id]" id="amyModal$value[id]"  data-toggle="modal" style="color:#fff;"> <button  class="btn btn-warning btn-mini">报名</button></a>
-              
+               <!--{if $value[shoucang]}-->     
+               <button id="shoucang$value[id]"  class="btn btn-warning btn-mini">收藏</button>
+                <!--{else}-->
+              <button id="shoucang$value[id]"  class="btn btn-danger btn-mini">取消收藏</button><!-- 这个要修复补一下，按键后不变色 -->
+                <!--{/if}-->  
+                 <a style="float:right" href="space.php?do=seddetails&secondid=$value[id]" target="_blank">more</a> 
             </li>
                
 
@@ -127,7 +131,7 @@
                   <button data-dismiss="modal" class="close" type="button">×</button>
                   <h3>修改交易信息</h3>
                  </div>
-                 <div style="width:100%;height:400px;">
+                 <div style="width:100%;height:350px;">
                   <div class="modal-body" style="text-align:center;overflow-y:hidden;float:left;width:500px;padding:0px;margin-top:10px;border-right:1px solid #CDCDCD;">
                     <p>交易标题：<input style="margin-left:6px;" type="text"  name="subject" id="resubject$value[id]" value="$value['sed_subject']"></p>
                      <p>交易价格：<input style="margin-left:6px;" type="text" name="sed_price" id="reprice$value[id]" value="$value['sed_price']">             
@@ -150,8 +154,9 @@
                  </div>
             </div>
             <div style="width:100%;text-align:center;">
+               <label id="warning" style="color:red">&nbsp&nbsp</label>
                <button type="submit" id="modifysecond$value[id]" class="btn btn-success">发布</button>
-               <button type="reset" class="btn btn-success">重置</button>
+                <button data-dismiss="modal" class="btn btn-success" id="cancel">取消</button>
              </div>
           </div>
              
@@ -235,8 +240,10 @@
 <!--End-breadcrumbs-->
 <script type="text/javascript">
  $(document).ready(function () {
-  
+
+  //收藏功能
   $("#shoucang$value[id]").click(function(){
+ if ($("#shoucang$value[id]").html()=="收藏") {
            $.ajax({
             type:"POST",
             url:"space.php?do=seddeal",
@@ -250,12 +257,31 @@
                           text: '信息收藏成功',
                           sticky: false
                         }); 
-                         $("#second$value[id]").hide();
-                      }else{
-                        alert('亲，麻烦您再试一次！');//
+                        $("#shoucang$value[id]").html("取消收藏");
+                        $("#shoucang$value[id]").removeClass().addClass("btn btn-danger btn-mini");
                       }
               }
        });
+     }else{
+        $.ajax({//取消收藏
+            type:"POST",
+            url:"space.php?do=seddeal",
+            data:"id=$value[id]&shoucang=0",
+            async: true,                    
+             success: function (data) {
+                      if(data=='1')
+                      {
+                        $.gritter.add({
+                          title:  '',
+                          text: '已取消收藏',
+                          sticky: false
+                        }); 
+                        $("#shoucang$value[id]").html("收藏");
+                         $("#shoucang$value[id]").removeClass().addClass("btn btn-warning btn-mini");
+                      }
+              }
+       });
+    }
   });
 
 //删除功能
@@ -275,7 +301,12 @@
                         }); 
                          $("#second$value[id]").hide();
                       }else{
-                        alert('删除没成功');//
+                        alert(data);
+                         $.gritter.add({
+                          title:  '',
+                          text: '删除不成功',
+                          sticky: false
+                        });
                       }
               }
        });
@@ -292,7 +323,7 @@
                     success: function (data) {
                       if(data=='-1')
                       {
-                        alert('选项有空值');//
+                       $("#warning").html("选项有空值哦！请把它填完...");
                       }else{
                         $("#modifymyModal$value[id]").hide();
                         $(".modal-backdrop").hide();
@@ -304,10 +335,6 @@
                         $('#subject$value[id]').html($('#resubject$value[id]').val());
                          $('#price$value[id]').html($('#reprice$value[id]').val());
                         $('#message$value[id]').html($('#remessage$value[id]').val()); 
-                        //$("#notetime").hide();
-                        //$("#notetime").html($('#retime$value[id]').val());
-                       //  $("#time$value[id]").parent().find('#notetime').html($('#retime$value[id]').val());
-
                       }
                     }
                   })
