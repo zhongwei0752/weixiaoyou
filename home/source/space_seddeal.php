@@ -7,9 +7,6 @@
 if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
-
-
-
 //插入信息
 $sed_jiaoyi=$_POST['sed_jiaoyi'];
 if($sed_jiaoyi){  
@@ -66,7 +63,6 @@ if ($sed_delete) {
 	$id=$_POST['id'];
 	$data=array('sed_hide'=>0);
     updatetable('second',$data,array('id'=>$id));
-    echo "1";
 }
 
 //收藏
@@ -76,8 +72,12 @@ if ($shoucang) {
 	$uid = $_SGLOBAL['supe_uid'];
 	$sed_time =strtotime(date('Y-m-d H:i:s'), $now);
 	inserttable("second_shoucang",array('sed_id'=>$sed_id,'uid'=>$uid,'sed_time'=>$sed_time),1);
-	include_once(S_ROOT.'./source/function_feed.php');
-	feed_publish($id, 'activityid', $olds?0:1);
+	echo "1";
+}
+if ($shoucang==0) {//取消收藏
+	$sed_id=$_POST['id'];
+	$uid = $_SGLOBAL['supe_uid'];
+	$_SGLOBAL['db']->query("DELETE FROM ".tname('second_shoucang')." where uid='".$uid."' and sed_id='".$sed_id."'");
 	echo "1";
 }
 

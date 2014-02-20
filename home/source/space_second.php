@@ -16,28 +16,31 @@ $perpage = 10;
 $perpage = mob_perpage($perpage);
 $start = ($page-1)*$perpage;
 ckstart($start, $perpage);
-if($op=='me'){
-//我的活动
-	if ($to=='shoucang') {
-	$theurl="space.php?do=second";
-	
-	$shoucangquery = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second_shoucang')." where uid=$_SGLOBAL[supe_uid]");
-	$shoucangvalue = $_SGLOBAL['db']->fetch_array($shoucangquery);
-    $count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where id=$shoucangvalue[sed_id] and sed_time>$_SGLOBAL[timestamp]"),0);
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second')." where sed_hide='1' and id=$shoucangvalue[sed_id]");
-
-
+if($op=='me'){//主要版面显示
+	if ($to=='shoucang') {//我的收藏
+	$theurl="space.php?do=second&to=shoucang";
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second_shoucang')." ss LEFT JOIN ".tname('second')." s ON ss.sed_id=s.id where ss.uid=$_SGLOBAL[supe_uid]");
+    $count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second_shoucang')." where uid=$_SGLOBAL[supe_uid]"),0);
 	}else{
-	$theurl="space.php?do=second";
+	$theurl="space.php?do=second";//我的交易
 	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where sed_time>$_SGLOBAL[timestamp]"),0);
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second')." where sed_hide='1' and uid=$_SGLOBAL[supe_uid] order by sed_dateline DESC LIMIT $start,$perpage ");
 }	
 }else{
-	$theurl="space.php?do=second";
+	$theurl="space.php?do=second";//正在进行的交易
 	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('second')." where sed_time>$_SGLOBAL[timestamp]"),0);
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second')." where sed_hide='1' and sed_time>$_SGLOBAL[timestamp] order by sed_dateline DESC LIMIT $start,$perpage ");
-	}
+}
 		while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+             //查询是否已经收藏该宝贝
+			$query2 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('second_shoucang')." where uid=$_SGLOBAL[supe_uid] and sed_id=$value[id]");
+			$value2 = $_SGLOBAL['db']->fetch_array($query2);
+			if($value2){
+				$value['shoucang']='0';//如果存在值，就说明已收藏，为1
+			}else{
+				$value['shoucang']='1';//反之亦然
+			}
+
 			$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('pic')." where picid=$value[sed_picid]");
 			$value1 = $_SGLOBAL['db']->fetch_array($query1);
 			if($value1['filepath']){
