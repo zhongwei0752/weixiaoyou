@@ -82,9 +82,9 @@
    <div class="widget-content tab-content" style="padding:0px;height:500px;">
      <div class="modal-header">
         
-          <h3>二手商品交易信息</h3>
+          <h5 style="text-align:center;">二手商品交易信息</h5>
      </div>
-     <div style="width:100%;height:400px;">
+     <div style="width:100%;height:300px;">
         <div class="modal-body" style="text-align:center;overflow-y:hidden;float:left;width:500px;padding:0px;margin-top:10px;border-right:1px solid #CDCDCD;">
              <p>交易标题：<input style="margin-left:6px;" type="text" name="sed_subject" id="sed_subject" placeholder="一个好标题可以很有吸引力的哦。">
             
@@ -98,7 +98,11 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span> 
                 </div>
              </p>
-             <p>交易详情：<textarea style="margin-left:6px;width:208px;" rows="5" cols="10" name="sed_message" id="sed_message" placeholder="还有什么想说的，不怕说。"></textarea></p>
+            
+             <p>联系电话：<input type="text" style="margin-left:6px;" name="sed_telephone" id="sed_telephone" placeholder="可以联系你！" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">  
+             </p>
+           
+             <p>宝贝描述：<textarea style="margin-left:6px;width:208px;" rows="5" cols="10" name="sed_message" id="sed_message" placeholder="还有什么想说的，不怕说。"></textarea></p>
         </div>
           <!-- 上传图片 -->
         <div class="modal-body" style="text-align:center;overflow-y:hidden;">
@@ -112,8 +116,9 @@
         </div>
      </div>
      <div style="width:100%;text-align:center;">
+               <label id="warning" style="color:red">&nbsp&nbsp</label>
                <button type="submit" id="sed_jiaoyi" class="btn btn-success">发布</button>
-               <button type="reset" class="btn btn-success">重置</button>
+               <button type="reset" class="btn btn-success" id="sed_cancel">取消</button>
      </div>
    </div>
 </div>
@@ -165,6 +170,46 @@
                      　　 alert("文件:" + file.name + " 上传失败");
                      　　}
                     　　});
+       jquery('#secondfileinput_').uploadify({//重复的上图图片代码，由于仅能唯一ID
+                     　　//以下参数均是可选
+                     　　'swf' : 'uploadify.swf', //指定上传控件的主体文件，默认'uploader.swf'
+                     　　'uploader' : './cp.php?ac=upload', //指定服务器端上传处理文件，默认'upload.php教程'
+                      'checkScript' : true,
+                     　　'cancelimg' : 'swfupload/uploadify-cancel.png', //指定取消上传的图片，默认'cancel.png'
+                     　　//'buttonimg':'swfupload/upload2.jpg',
+                     　　'auto' : true, //选定文件后是否自动上传，默认false
+                     　　//'folder' : '/userphoto' , //要上传到的服务器路径，默认'/'
+                     　　'multi' : false, //是否允许同时上传多文件，默认false
+                     　　'filedesc' : '图片文件' , //出现在上传对话框中的文件类型描述
+                     　　'fileext' : '*.jpg;*.bmp;*.png;*.gif', //控制可上传文件的扩展名，启用本项时需同时声明filedesc
+                     　　'sizelimit': 86400, //控制上传文件的大小，单位byte
+                      'formData': { 'uploadsubmit2': 'true', 'albumid':'0', 'formhash':'<!--{eval echo formhash();}-->', 'index':'1', 'ac':'upload', 'uid' : '$_SGLOBAL[supe_uid]',"session":"<?php echo session_id()?>"},
+                     　　'onUploadSuccess': function(file, data, response) {
+                      　　  //jquery('#image').attr("src","<%=basepath%>userphoto/"+res ponse);
+                      　　  //jquery('#image').show();
+                      　　  //jquery('#photo').attr("value",response);
+                        
+                          data = eval("(" + data + ')');
+                        
+                        jquery("#sedoptionimga_").attr("src",data.pic);
+                        jquery("#sedoptionimga_").show();
+                        jquery("#sedpics_").val(data.picid);
+                        var astr = '<a href="#" id="delete" onclick="deletepic();">删除</a>';
+                        jquery("#sedoptionimga_").parent().append(astr);
+                        
+                     　　},
+                      'onUploadComplete': function(file){
+                        jquery('#secondfileinput_').hide();
+                        
+                      },
+                      'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                        alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                      },
+                      'fileObjName':'attach',
+                     　　'onUploadError' : function(file, errorCode, errorMsg, errorString){
+                     　　 alert("文件:" + file.name + " 上传失败");
+                     　　}
+                    　　});
                      
             　　});
                
@@ -173,10 +218,28 @@
 <!--End-breadcrumbs-->
 <script type="text/javascript">
  $(document).ready(function () {
-  
-$("#sed_jiaoyi").click(function(){//二手市场信息发布
-     // alert("123");
-      $.ajax({
+
+ /*  $("#validate").click(function(){
+    if ($("#password").valid()) {
+      $("#password").submit();
+    };
+    submitHandler:function(form)
+     {
+      rules:{ 
+    password:{
+      required:true,
+      minlength:5
+       } 
+       },
+   message:{
+    password:"请输入密码"，
+    minlength: jQuery.format("密码不能小于{0}个字 符")
+   },
+     }
+  });*/
+  //二手市场信息发布
+$("#sed_jiaoyi").click(function(){
+     $.ajax({
                 type:"POST",
                 url:"space.php?do=seddeal",
                 data:"sed_subject="+$('#sed_subject').val()+"&sed_price="+$('#sed_price').val()+"&sed_dateline="+$('#sed_dateline').val()+"&sed_message="+$('#sed_message').val()+"&picid="+$('#sedpics_').val()+"&sed_jiaoyi=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
@@ -184,107 +247,19 @@ $("#sed_jiaoyi").click(function(){//二手市场信息发布
                     success: function (data) {
                       if(data=='-1')
                       {
-                        alert("选项有空值");
+                         $("#warning").html("选项有空值哦！请把它填完...");
                       }else{
-                        alert('交易信息发布成功');
-                        window.history.back(-1);
+                          $("#warning").html("恭喜您！信息发布成功!现在为你跳转...");
+                          window.setTimeout("window.location='./space.php?do=second&op=me'",1500); 
                       }
                     }
         })
      });
-
-//收藏
-  $("#shoucang$value[id]").click(function(){
-           $.ajax({
-            type:"POST",
-            url:"space.php?do=seddeal",
-            data:"id=$value[id]&shoucang=1",
-            async: true,                    
-             success: function (data) {
-                      if(data=='1')
-                      {
-                        $.gritter.add({
-                          title:  '',
-                          text: '信息收藏成功',
-                          sticky: false
-                        }); 
-                         $("#second$value[id]").hide();
-                      }else{
-                        alert('亲，麻烦您再试一次！');//
-                      }
-              }
-       });
-  });
-
-//删除功能
-    $("#delete$value[id]").click(function(){
-       $.ajax({
-            type:"POST",
-            url:"space.php?do=seddeal",
-            data:"id=$value[id]&delete=1",
-            async: true,                    
-             success: function (data) {
-                      if(data=='1')
-                      {
-                        $.gritter.add({
-                          title:  '',
-                          text: '信息删除成功',
-                          sticky: false
-                        }); 
-                         $("#second$value[id]").hide();
-                      }else{
-                        alert('删除没成功');//
-                      }
-              }
-       });
-      
-    });
-//修改功能
-    $("#modifysecond$value[id]").click(function(){
-      //alert("11");
-       $.ajax({
-                 type: "POST",
-                 url: "space.php?do=seddeal",
-                 data: "subject="+$('#resubject$value[id]').val()+"&time="+$('#retime$value[id]').val()+"&price="+$('#reprice$value[id]').val()+"&message="+$('#remessage$value[id]').val()+"&picid="+$('#pics_').val()+"&id=$value[id]&modifysecond=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
-                  async: true,                    
-                    success: function (data) {
-                      if(data=='-1')
-                      {
-                        alert('选项有空值');//
-                      }else{
-                        $("#modifymyModal$value[id]").hide();
-                        $(".modal-backdrop").hide();
-                        $.gritter.add({
-                          title:  '',
-                          text: '信息修改成功',
-                          sticky: false
-                        }); 
-                        $('#subject$value[id]').html($('#resubject$value[id]').val());
-                         $('#price$value[id]').html($('#reprice$value[id]').val());
-                        $('#message$value[id]').html($('#remessage$value[id]').val()); 
-                        //$("#notetime").hide();
-                        //$("#notetime").html($('#retime$value[id]').val());
-                       //  $("#time$value[id]").parent().find('#notetime').html($('#retime$value[id]').val());
-
-                      }
-                    }
-                  })
-              });
-
-
-  $("#amyModal$value[id]").click(function () {
-          $.ajax({
-                 type: "POST",
-                 url: "./source/qr.php",
-                 data: "uid=$value[uid]&loginuid=$_SGLOBAL[supe_uid]&id=$value[id]&qr=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
-                  async: true,                    
-                    success: function (data) {
-                    $("#qrcode").html("<img src='"+data+"'>");
-                    }
-                  })
-        });
-
-  })
+//取消
+   $("#sed_cancel").click(function(){
+    window.location='./space.php?do=home';
+   });
+});
 </script>
 <script src="./template/default/time/countdown/jquery.countdown.js"></script>
 <script type="text/javascript">
@@ -389,26 +364,6 @@ $(function(){
 
     });
   $(document).ready(function () {
-
-    
-
-    $("#huodong").click(function () {
-      $.ajax({
-                 type: "POST",
-                 url: "space.php?do=deal",
-                 data: "subject="+$('#subject').val()+"&time="+$('#time').val()+" &message="+$('#message').val()+"&huodong=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
-                  async: true,                    
-                    success: function (data) {
-                      if(data=='-1')
-                      {
-                        alert("选项有空值");
-                      }else{
-                        alert("发布成功");
-                      }
-                    }
-                  })
-              });
-         
     $("#guoneimore").click(function () {
       
         $.ajax({
